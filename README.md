@@ -16,7 +16,7 @@
 
 * Linux users will commonly store their config in a .tt folder
 
-		ln -s tintin .tt
+		ln -s source/3Steps .tt
 
 * Wintin++ users:  
 	Edit main.tin and put this inside ->
