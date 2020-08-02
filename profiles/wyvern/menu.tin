@@ -1,0 +1,39 @@
+#NOP
+
+#echo {Alts:};
+#echo {};
+
+#echo {1) Goo(changeling)};
+#var {my[alts][1][name]}{goo3s};
+#var {my[alts][1][guild]}{changeling};
+
+#echo {};
+
+#echo {2) Dathit(jedi)(dathomir witch)};
+#var {my[alts][2][name]}{dathit3s};
+#var {my[alts][2][guild]}{jedi};
+#var {my[alts][2][subguild]}{dathomir witch};
+
+#echo {};
+
+#echo {3) Beldin(sii)};
+#var {my[alts][3][name]}{beldin3s};
+#var {my[alts][3][guild]}{sii};
+
+#echo {};
+
+#echo {4) Ralit(jedi)(baadu)};
+#var {my[alts][4][name]}{ralit3s};
+#var {my[alts][4][guild]}{jedi};
+#var {my[alts][4][subguild]}{baadu};
+#echo {};
+
+#echo {con <number>:};
+
+#line oneshot #alias {^%d$}{con %1};
+
+#line oneshot #alias {con}{
+	connect ${my[alts][%1][name]};
+	#unvar {my[alts]};
+	#unalias {con}
+};

@@ -1,0 +1,214 @@
+#class {goo} {open}
+
+#var guild changeling
+
+#read /Users/talir/Dropbox/3k/containsfunction.txt;
+#read /Users/talir/Dropbox/3k/deltafunction.txt;
+
+#ticker {gxp}{#send {}}{240};
+
+#alias {^fuse all$}{
+    #send {!fuse all black};
+	#send {!fuse all dark};
+	#send {!fuse all murky};
+	#send {!fuse all turbid};
+	#send {!fuse all lucid};
+	#send {!fuse all milky};
+	#send {!fuse all opaque};
+	#send {!fuse all cloudy};
+	#send {!fuse all foggy};
+	#send {!fuse all translucent};
+	#send {!fuse all transparent};
+	#send {!fuse black and dark};
+	#send {!fuse black and murky};
+	#send {!fuse black and turbid};
+	#send {!fuse black and milky};
+	#send {!fuse black and opaque};
+	#send {!fuse black and cloudy};
+	#send {!fuse dark and murky};
+	#send {!fuse dark and turbid};
+	#send {!fuse dark and milky};
+	#send {!fuse dark and opaque};
+	#send {!fuse dark and cloudy};
+	#send {!fuse murky and turbid};
+	#send {!fuse murky and cloudy};
+	#send {!fuse turbid and milky};	
+	#send {!fuse turbid and cloudy};
+	#send {!fuse turbid and opaque};
+	#send {!fuse cloudy and opaque};	
+	#send {!keep all bioplast};
+};
+
+
+#act {The egg begins to vibrate and rock erratically}{#send {!= assist}};
+
+#alias o {bioextract;keep bioplast};
+
+#action {Successfully fused %d bioplasts.}{#send {!keep all bioplast};};
+
+
+#ALIAS {.PerseveranceCheck}
+{
+	#IF { $changeling[perseveranceOn] == 1 && $changeling[stamPpRatio] <= 0.90 }
+	{
+		#send {!pero};
+	};
+	
+	#IF { $changeling[perseveranceOn] == 0 && $changeling[stamPpRatio] >= 1.2 }
+	{
+		#send {!per};
+	};
+};
+
+
+#var {changeling[relinquishOn]} {0};
+#var changeling[autoRelinquish] 1;
+#alias {^arl$}{
+	#IF {$changeling[autoRelinquish] == 1}
+	{
+		#var changeling[autoRelinquish] 0;
+		#echo {Auto-relinquish off};
+	}{
+		#var changeling[autoRelinquish] 1;
+		#echo {Auto-relinquish on};
+	}
+};
+#ALIAS {.RelinquishCheck}
+{
+	#if {$changeling[autoRelinquish] == 0}
+	{
+		#return;
+	};
+	#if {$changeling[relinquishOn] == 0 && $changeling[relinquishes] >= 1 && $changeling[relinquishReset] >= 99}
+	{
+		#send {!relinquish}
+	};
+	#if {$changeling[relinquishOn] == 0 && $changeling[relinquishes] >= 2 && $changeling[relinquishReset] >= 90}
+	{
+		#send {!relinquish}
+	};
+	#if {$changeling[relinquishOn] == 0 && $changeling[relinquishes] >= 3 && $changeling[relinquishReset] > 80}
+	{
+		#send {!relinquish}
+	};
+	#if {$changeling[relinquishOn] == 0 && $changeling[relinquishes] >= 4 && $changeling[relinquishReset] >= 70}
+	{
+		#send {!relinquish}
+	};
+	#if {$changeling[relinquishOn] == 0 && $changeling[relinquishes] >= 5 && $changeling[relinquishReset] >= 60}
+	{
+		#send {!relinquish}
+	};
+	#if {$changeling[relinquishOn] == 0 && $changeling[relinquishes] >= 6 && $changeling[relinquishReset] >= 50}
+	{
+		#send {!relinquish}
+	};
+};
+
+#ACTION {^S[%*\%] P[%*\%] (%d) C[%d/%d\%] <%*> E[%*]$}
+{
+	#var {changeling[stam]} {%1};
+	#var {changeling[deltaStam]} @delta{STAM;$changeling[stam]};
+	#var {changeling[protoplasm]} {%2};
+	#var {changeling[deltaProtoplasm]} @delta{PROTOPLASM;$changeling[protoplasm]};
+	#var {changeling[bioplasts]} {%3};
+	#var {changeling[relinquishes]} {%4};
+	#var {changeling[relinquishReset]} {%5};
+	#var {changeling[statusStr]} {%6};
+	#var {changeling[enemy]} {%7};
+
+	#var changeling[dissOn] @contains{$changeling[statusStr];{%*D%*}};
+	#var changeling[adrenOn] @contains{$changeling[statusStr];{%*A%*}};
+	#var changeling[augOn] @contains{$changeling[statusStr];{%*G%*}};
+	#var changeling[hyperpOn] @contains{$changeling[statusStr];{%*H%*}};
+	#var changeling[thermoOn] @contains{$changeling[statusStr];{%*T%*}};
+	#var changeling[relinquishOn] @contains{$changeling[statusStr];{%*R%*}};
+	#var changeling[perseveranceOn] @contains{$changeling[statusStr];{%*V%*}};
+	#math {changeling[stamPpRatio]} {$changeling[stam] / $changeling[protoplasm]};
+
+	#format {changeling[forces]} {%.1s} {$changeling[statusStr]};
+
+	.RelinquishCheck;
+	.PerseveranceCheck;
+}
+
+#action {^[%w %*\%][%*%d%.%d\%]$}
+{
+
+	#var changeling[skillName] %1;
+	#var changeling[skillPercent] %2;
+	#math {changeling[skillPercent]}{$changeling[skillPercent] * 1.00};
+	#var changeling[formName] %3;
+	#var changeling[formPercentWhole] %4;
+	#math {changeling[formPercentWhole]}{$changeling[formPercentWhole] * 1.00};	
+	#var changeling[formPercentDecimal] %6;
+	#math changeling[formPercentDecimal] {$changeling[formPercentDecimal] / 100.00};
+	#math changeling[formPercent] {$changeling[formPercentWhole] + $changeling[formPercentDecimal]};
+	#var changeling[formPercentDelta] @delta{FORM;$changeling[formPercent]};
+	#format {changeling[formName]} {%n}{$changeling[formName]};
+	#format {changeling[formName]} {%p}{$changeling[formName]};
+	update_status;
+	#line gag;
+};
+
+#alias {update_status} {
+	#var my[ff][current] $changeling[formPercent];
+	#var	{my[hp][graph]}		{@graph{$my[hp][current];$my[hp][max]}};
+	#var	{my[sp][graph]}		{@graph{$my[sp][current];$my[sp][max]}};
+	#var	{my[gp1][graph]}	{@graph{$my[gp1][current];100}};
+	#var	{my[gp2][graph]}	{@graph{$my[gp2][current];100}};
+	#var	{my[ff][graph]}		{@graph{$my[ff][current];100}};
+	#var	{my[skill][graph]}	{@graph{$my[skill][current];100}};
+	#var	{enemy[graph]}		{@graph{$enemy[hp];100}};
+	#format {hp}			{%+4s} {@colscale{$my[hp][current];$my[hp][max]}};
+	#format {hp_max}		{%+4s} {<128>$my[hp][max]<088>};
+	#format {sp}			{%+4s} {@colscale{$my[sp][current];$my[sp][max]}};
+	#format {sp_max}		{%+4s} {<128>$my[sp][max]<088>};
+	#format {stam}			{%+8s} {@colscale{$my[gp1][current];100}};
+	#format {pp}			{%+7s} {@colscale{$my[gp2][current];100}};
+	#format {ff}			{%+8s} {@colscale{$my[ff][current];100}};
+	#format {skill}			{%+8s} {@colscale{$my[skill][current];100}};
+	#format {relin}			{%+2s} {$my[relinquish][current]};
+	#format {relin_r}		{%+3s} {$my[relinquish][reset]};
+	#format {bio}			{%+3s} {$my[bioplasts]};
+	#format {ehealth}		{%+8s} {@colscale{$enemy[hp];100}\%};
+
+	#showme {<088>HP:${hp}/${hp_max} SP:${sp}/${sp_max} ST:${stam}%  PP:${pp}%  FF:${ff}  G2N: ${skill}%  BP:${bio}    E: $enemy[hp]} {-4};
+	#showme {H:${my[hp][graph]} S:${my[sp][graph]} ST:${my[gp1][graph]} P:${my[gp2][graph]} F:${my[ff][graph]} G2N: $my[skill][graph] R:${relin}/${relin_r}\% E:${enemy[graph]}} {-3};
+	#showme {$mip[gline][2]} {-7};
+	#showme {$mip[gline][1]} {-6};
+}
+
+#action {%* dealt the killing blow to %*}{
+    #showme {There is no reason to 'inch' here.};
+};
+
+#alias oextra {#nop {};};
+#alias {next %*} {
+	#action {There is no reason to 'inch' here.$}
+	{
+		oextra;
+		#math changeling[nextDelay] {1 d 6};
+		#echo {Next delay: [$changeling[nextDelay]] Action [%1]};
+		#delay {$changeling[nextDelay]}{
+			%1;
+		};
+	};
+};
+
+#substitute {!!!}{!};
+#substitute {!!}{!};
+
+#GAG {There is no corpse present\!};
+#GAG {There is no corpse to absorb\!};
+#GAG {You keep A bioplast (%1).};
+#GAG {You keep \*A bioplast (%1)};
+#GAG {bioplast: Taken.}
+#GAG {Cells blacken and die around your superheated regions};
+#GAG {The searing heat that you are generating is damaging your cells};
+#gag {You donate A bioplast (%w).};
+#gag {You give A bioplast (%w) to Eleanor.};
+#gag {A bioplast (%w) is too heavy for her.};
+#gag {You unkeep A bioplast (%w)};
+
+#class {goo} {close}

@@ -1,0 +1,6 @@
+#nop {}
+
+#NOP Chaos sea specific actions, because the mobs sometimes block
+#var skipMobsBlockerMessage {Blocker found, undoing.  Move manualy after the mob is dead to resume.};
+#action {The Chaotic Mutant bars your way!}{#echo {$skipMobsBlockerMessage};#map undo}
+#action {%* blocks your way!}{#echo {$skipMobsBlockerMessage};#map undo}

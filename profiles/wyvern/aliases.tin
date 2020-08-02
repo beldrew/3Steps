@@ -1,0 +1,129 @@
+#nop {}
+
+#read /Users/talir/Dropbox/3k/containsfunction.txt;
+#read /Users/talir/Dropbox/3k/deltafunction.txt;
+
+#alias srlc #read ${myprofilepath}/chars/$ses_name/char.tin;
+
+#alias kk {kill mutant};
+
+mapgo csewers;
+autok;
+
+party;
+
+#ungag {^You hit %1.};
+#unact {^You hit %1 %d times for %3 damage.};
+#unact {^You hit %1 %d time for %3 damage.};
+
+#alias {cco}{#nop}
+
+#alias {^challenge all$}
+{
+	challenge grundar;
+	challenge sholan;
+	challenge crae;
+	challenge beloch;
+	challenge aranow;
+	challenge heorki;
+	challenge noeque;
+	challenge yoeln;
+	challenge ghoti;
+};
+
+#var partybeep 0;
+#alias pb {#IF {$partybeep == 0}{#echo {PartyBeep on};#var partybeep 1;}{#echo {PartyBeep off};#var partybeep 0;}}
+
+#action {^[{PARTY|PLINK}] %*:%*}
+{
+    #if {"%1" == "Ralit" || "%1" == "Wyvern" || "%1" == "Calisp" || "%1" == "Bysis" || "%1" == "Talir" || "%1" == "Dathit" || "%1" == "Goo"}
+    {
+        #return;
+    };
+    #if {$partybeep == 1}
+    {
+        #bell;
+    };
+}
+
+#action {%w tells you: }{#bell}
+
+#action {^From afar, %w}{#bell}
+
+#alias {^who$}{#send {!who -l}};
+
+#alias {^who wiz$} {#send {!who -l wiz}};
+
+#alias {^players$} {#send {!players -l}};
+
+#alias {^players %*} {#send {!players -l %1}};
+
+#alias {mobset}{aset look_monster magenta+<M>};
+#alias {unmobset}{aset look_monster magenta};
+
+#ticker {gxp}{#send {}}{60};
+
+#alias {^gh$}{gossip -h};
+
+#alias {aegispath} {e;w;w;w;e;n;s;s;e;e;w;s;e;w;s;e;w;s;e;w;w;e;s;n;n;n;n;w;s;n;w;s;n;w;s;n;w;s;n;w;n;e;w;w;e;n;e;w;w;e;s;s;w;w;e;s;w;e;s;w;e;n;e;e;s;s;e;s;n;w;n;n;n;e;e;e;e;e;w;n;e;e}
+
+#alias bfathom {sw;se;sw;sw;w;sw;e;se;se;e;e;e;e;portal;home};
+#alias gfathom {fantasy;pr;w;w;w;w;nw;nw;w;ne;e;ne;ne;nw;ne};
+
+#alias ss {#30 #send {!south}};
+#alias nn {#30 #send {!north}};
+#alias ee {#30 #send {!east}};
+#alias ww {#30 #send {!west}};
+
+#alias see {#30 #send {!southeast}};
+#alias nee {#30 #send {!northeast}};
+#alias sww {#30 #send {!southwest}};
+#alias nww {#30 #send {!northwest}};
+
+#sub {=X=%*=X=}{<139>%1<099>};
+#sub {=M= %*}{<059>%1<099>};
+#sub {=W= %*}{<019>%1<099>};
+#sub {=A= %*}{<029>%1<099>};
+#sub {=I= %*}{<139>%1<099>};
+#sub {=P= %*}{<169>%1<099>};
+
+#gag {^>$};
+
+#GAG {%*1 %?Syndicate Guest ID Badge [Tuna Landing Party].};
+#GAG {%*1 %?An auction line.};
+#GAG {%*1 %?Safari Hat.};
+#GAG {%*1 %?Shaman's Totem.};
+#GAG {%*1 %?A cat o' nine tails.};
+#GAG {%*1 %?Worn leather book.};
+#GAG {%*1 %?Mystic's Orb.};
+#GAG {%*1 %?A Crafter's Satchel.};
+#GAG {%*1 %?A ring of house keys.};
+#GAG {%*1 %?A Loremaster's Staff.};
+
+#gag {TSA                                 %*|%+|}
+#gag {Saboteurs                           %*|%+|}
+#gag {Brotherhood of the Blade            %*|%+|}
+#gag {Cow Haters Anonymous                %*|%+|}
+#gag {Cowville                            %*|%+|}
+#gag {Deep Mountain Duergar               %*|%+|}
+#gag {Detroit Metro Police Department     %*|%+|}
+#gag {Dominion of Darkness                %*|%+|}
+#gag {Illithid Enclave                    %*|%+|}
+#gag {Pinnacle Tower                      %*|%+|}
+#gag {Thieves Alliance                    %*|%+|}
+#gag {Wayhaven Consortium                 %*|%+|}
+#gag {Wheel of Dragons                    %*|%+|}
+#gag {fe dar Shad                         %*|%+|}
+#gag {Mahjongg                            %*|%+|}
+#gag {Aegis Global                        %*|%+|}
+#gag {Knights of the Realm                %*|%+|}
+#gag {Hardcore Mercs                      %*|%+|}
+#gag {The Mercenaries of Thiras           %*|%+|}
+#gag {Rohm Giddor                         %*|%+|}
+#gag {Foundation Tower                    %*|%+|}
+#gag {Dreamville Avengers                 %*|%+|}
+
+#gag {MTG - Legends                       %*|%+|}
+#gag {Defenders of Niroth                 %*|%+|}
+#gag {Demon Hunters                       %*|%+|}
+#gag {Donut Slayers                       %*|%+|}

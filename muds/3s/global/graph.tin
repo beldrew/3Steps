@@ -16,7 +16,8 @@
 			#format {per_1} {%.1s} {$per};
 			#format {per_2} {%r} {$per};
 			#format {per_2} {%.1s} {$per_2};
-			#var graph {<008><DCA>    ${per_1}<070>${per_2}%%   <088>}};
+			#var graph {<008><DCA>    ${per_1}<070>${per_2}%%   <088>};
+		};
 		#if {$per < 50} {#var graph {<008><DBA>    <070>$per%%   <088>}};
 		#if {$per < 40} {#var graph {<008><EBA>   <070> $per%%   <088>}};
 		#if {$per < 30} {#var graph {<008><EAA>  <070>  $per%%   <088>}};
@@ -37,9 +38,8 @@
 		}; #else {
 			#var graph {          }
 		}
-	}
-
-        #return $graph
+	};
+    #return $graph
 }
 
 #function {colscale} {
