@@ -1,7 +1,22 @@
 #nop {}
 
-#read /Users/talir/Dropbox/3k/containsfunction.txt;
-#read /Users/talir/Dropbox/3k/deltafunction.txt;
+#function {contains}
+{ 
+	#regexp {%1} {%2} { #return 1;}{#return 0;};
+};
+
+#var deltaDict {};
+#function {delta}
+{ 
+	#format {deltaKey}{%l}{%1};
+	#variable {prevValue} {$deltaDict[$deltaKey]};
+	#variable {curValue} {%2};
+	#variable deltaDict[$deltaKey] $curValue;
+	#math curDelta {$curValue - $prevValue};
+
+	#return $curDelta;
+};
+
 
 #alias srlc #read ${myprofilepath}/chars/$ses_name/char.tin;
 
