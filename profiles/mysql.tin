@@ -29,7 +29,7 @@
 #VAR {my[config][db][damage]}{1};
 #VAR {my[config][db][kill]}{1};
 #VAR {my[config][db][biome]}{1};
-#VAR {my[config][db][enabled]}{1};
+#VAR {my[config][db][enabled]}{0};
 
 #alias {toggledb}{
 	#if {$my[config][db][enabled] == 1}{
