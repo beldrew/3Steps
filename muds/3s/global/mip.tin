@@ -94,11 +94,11 @@
 #var IdleLimit 3600
 #TICKER {idle} {
 	#math {idle} {$idle + 1};
-	#if {$idle > 900} {
+	#if {$idle > 3000} {
 		#draw tile 21 1 -8 1 {<BF00>}
-	}; #elseif {$idle > 840} {
+	}; #elseif {$idle > 2400} {
 		#draw tile 21 1 -8 1 {<BFF0>}
-	}; #elseif {$idle > 600} {
+	}; #elseif {$idle > 1800} {
 		#draw tile 21 1 -8 1 {<B0F0>}
 	}; #elseif {$idle < 600} {
 		#screen clear square 21 1 -8 1
@@ -435,7 +435,8 @@
 	#REGEX {%0} { stumbles in confusion as the amulet hypnotizes } {#var mipgag 1};
 
 	#NOP Jedi;
-	#REGEX {%0} { arrives at the academy } {#var mipgag 1};
+	#REGEX {%0} { arrives at the Academy.} {#var mipgag 1};
+	#REGEX {%0} { leaves the Academy.} {#var mipgag 1};
 
 	#REGEX {%0} {~Korenth~} {#bell};
 	#REGEX {%0} {~Zanadu~} {#bell};
