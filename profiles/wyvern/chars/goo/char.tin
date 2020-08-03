@@ -172,11 +172,14 @@
 	#format {relin_r}		{%+3s} {$my[relinquish][reset]};
 	#format {bio}			{%+3s} {$my[bioplasts]};
 	#format {ehealth}		{%+8s} {@colscale{$enemy[hp];100}\%};
-
-	#showme {<088>HP:${hp}/${hp_max} SP:${sp}/${sp_max} ST:${stam}%  PP:${pp}%  FF:${ff}  G2N: ${skill}%  BP:${bio}    E: $enemy[hp]} {-4};
-	#showme {H:${my[hp][graph]} S:${my[sp][graph]} ST:${my[gp1][graph]} P:${my[gp2][graph]} F:${my[ff][graph]} G2N: $my[skill][graph] R:${relin}/${relin_r}\% E:${enemy[graph]}} {-3};
-	#showme {$mip[gline][2]} {-7};
-	#showme {$mip[gline][1]} {-6};
+	#if {"$draw[hpbar]" == "on"} {
+		#showme {<088>HP:${hp}/${hp_max} SP:${sp}/${sp_max} ST:${stam}%  PP:${pp}%  FF:${ff}  G2N: ${skill}%  BP:${bio}    E: $enemy[hp]} {-4};
+		#showme {H:${my[hp][graph]} S:${my[sp][graph]} ST:${my[gp1][graph]} P:${my[gp2][graph]} F:${my[ff][graph]} G2N: $my[skill][graph] R:${relin}/${relin_r}\% E:${enemy[graph]}} {-3};
+	};
+	#if {"$draw[gline]" == "on"} {
+		#showme {$mip[gline][2]} {-7};
+		#showme {$mip[gline][1]} {-6};
+	};
 }
 
 #action {%* dealt the killing blow to %*}{

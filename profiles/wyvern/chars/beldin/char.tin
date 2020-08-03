@@ -164,10 +164,14 @@
 	#format {co}			{%+4s} {@colscale{$my[control][current][integer];$my[control][max][integer]}};
 	#format {co_max}		{%+4s} {<128>$my[control][max][integer]<088>};
 	#format {ehealth}		{%+6s} {@colscale{$enemy[hp];100}\%};
-	#showme {<088>HP:${hp}/${hp_max} SP:${sp}/${sp_max} FO:${fo}/${fo_max} CO:${co}/${co_max} E: ${ehealth}} {-4};
-	#showme {H:${my[hp][graph]} S:${my[sp][graph]} F:${my[gp1][graph]} C:${my[control][graph]} E:${enemy[graph]}} {-3};
-	#showme {$mip[gline][2]} {-6};
-	#showme {$mip[gline][1]} {-7};
+	#if {"$draw[hpbar]" == "on"} {
+		#showme {<088>HP:${hp}/${hp_max} SP:${sp}/${sp_max} FO:${fo}/${fo_max} CO:${co}/${co_max} E: ${ehealth}} {-4};
+		#showme {H:${my[hp][graph]} S:${my[sp][graph]} F:${my[gp1][graph]} C:${my[control][graph]} E:${enemy[graph]}} {-3};
+	};
+	#if {"$draw[gline]" == "on"} {
+		#showme {$mip[gline][2]} {-6};
+		#showme {$mip[gline][1]} {-7};
+	};
 };
 
 #action {%*There is no usable corpse here for you to envelop}{#send {!brood feed};};

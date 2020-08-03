@@ -296,10 +296,14 @@ next #bell;
 	#format {conc}			{%+8s} {@colscale{$my[conc][current];100}};
 	#format {force}			{%+6s} {@rcolscale{$my[force][current];100}};
 	#format {ehealth}		{%+8s} {@colscale{$enemy[hp];100}\%};
-	#showme { <088>HP:${hp}/${hp_max} SP:${sp}/${sp_max} C:${conc}%  F:${force}%    M: ${my[desired][mode]}}{-4};
-	#showme {    ${my[hp][graph]}   ${my[sp][graph]}  ${my[gp1][graph]}   ${my[gp2][graph]} E: ${enemy[graph]}} {-3};
-	#showme { $mip[gline][2]} {-6};
-	#showme { $mip[gline][1]} {-7};
+	#if {"$draw[hpbar]" == "on"} {
+		#showme { <088>HP:${hp}/${hp_max} SP:${sp}/${sp_max} C:${conc}%  F:${force}%    M: ${my[desired][mode]}}{-4};
+		#showme {    ${my[hp][graph]}   ${my[sp][graph]}  ${my[gp1][graph]}   ${my[gp2][graph]} E: ${enemy[graph]}} {-3};
+	};
+	#if {"$draw[gline]" == "on"} {
+		#showme { $mip[gline][2]} {-6};
+		#showme { $mip[gline][1]} {-7};
+	};
 }
 
 #class {dathit} {close}
