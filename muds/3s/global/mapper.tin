@@ -458,15 +458,6 @@
 #NOP Body Mansion
 #act {^You bump into a locked door.} {#map undo}
 
-#NOP Carnegie
-#act {^Woody Allen says: You're going to have to wait for security!} {#map undo}
-#act {^Mel Brooks blocks the exit.} {#map undo}
-#act {^Jay-Z says: You're going to have to wait for security!} {#map undo}
-#act {^Jay-Z says: Where do you think you're going?} {#map undo}
-#act {^Jay-Z stops you leaving.} {#map undo}
-#act {^Jay-Z blocks the exit.} {#map undo}
-#act {^Trixie Hilton blocks the exit.} {#map undo}
-
 #NOP Chaos Cinemaplex
 #act {^The movie usher asks for your movie ticket. When you fail to come up with} {#map undo}
 
@@ -479,9 +470,6 @@
 
 #NOP Detroit
 #act {^Officer yells: Get him, he must be stealing something!!!!} {#map undo}
-
-#NOP Dundee
-#act {^The foliage in this part of the swamp is extremely thick and will take} {#map undo}
 
 #NOP Dragon Realms
 #act {^You cannot get past the dragon guards.} {#map undo}
@@ -499,9 +487,6 @@
 
 #NOP Land
 #act {^You are caught like a fly in a spider web, burning and twisting as} {#map undo}
-
-#NOP Longshadow
-#act {^The drawbridge is currently upright denying you access to the castle.} {#map undo}
 
 #NOP Mage Tower
 #act {^The guard blocks your passage.} {#map undo}
@@ -533,10 +518,6 @@
 #NOP Underdark
 #act {^The {drow|guard} prevents you from going that way.} {#map undo}
 #act {^The troll will not let you pass.} {#map undo}
-
-#NOP Whorehouse
-#act {^Doh shoves you backwards with a scowl.} {#map undo}
-#act {^Your feet are mired in the bird poop, you can't seem to move!!} {#map undo}
 
 /* Allow clicking on a room to get map info */
 #event {MAP SHORT-CLICKED MOUSE BUTTON ONE} {

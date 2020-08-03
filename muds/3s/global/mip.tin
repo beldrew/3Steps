@@ -91,7 +91,7 @@
 }
 
 #var clockon 0
-#var IdleLimit 900
+#var IdleLimit 3600
 #TICKER {idle} {
 	#math {idle} {$idle + 1};
 	#if {$idle > 900} {
@@ -222,7 +222,6 @@
 			#CASE {"jedi"}		{.mipProcessGlineJedi {%1}};
 			#CASE {"juggernaut"}	{.mipProcessGlineJuggernaut {%1}};
 			#CASE {"necromancer"}	{.mipProcessGlineNecromancer {%1}};
-			#CASE {"psicorp"}	{.mipProcessGlinePsicorp {%1}};
 			#CASE {"sii"}		{.mipProcessGlineSii {%1}}
 			#CASE {"angel"}		{.mipProcessGlineAngel {%1}}
 			#CASE {"mages"}		{.mipProcessGlineMages {%1}}
@@ -383,19 +382,6 @@
 	}
 }
 
-#ALIAS {.mipProcessGlinePsicorp} {
-	#IF {%1 == 1} {
-		#NOP
-	}; #ELSEIF {%1 == 2} {
-		#REGEX {$mip[gline][2]} {G2N: %* / %d\%} {
-			#FORMAT {my[gxp][tnl]} {%d} {&1};
-			#VAR {my[gxp][per]} {&2}
-		}
-	}; #ELSE {
-		#ECHO {<171> Invalid Gline Number <088>}
-	}
-}
-
 #ALIAS {.mipProcessGlineSii} {
 	#IF {%1 == 1} {
 		#REGEX {$mip[gline][1]}	{Regen: %w}	{#VAR {my[regen]}		{&1}}
@@ -409,17 +395,6 @@
 	}
 }
 
-#ALIAS {.mipProcessGlineBard} {
-	#IF {%1 == 1} {
-		
-	}; #ELSEIF {%1 == 2} {
-		
-	}; #ELSE {
-		#ECHO {<171> Invalid Gline Number <088>}
-	}
-}
-
-
 #NOP ***** 2 Way Communication (Tell/Emote) *****
 #ALIAS {.mipProcessBABgag} {
 	#var mipgag 0;
@@ -430,29 +405,16 @@
 
 	#NOP Add cases for tells/emotes to gag from monitor, such as mob emotes;
 
-	#NOP Byron crying OW;
-	#REGEX {%01} {~Byron~cries 'OW!!'} {#var mipgag 1};
-
-	#NOP Dundee;
-	#REGEX {%0} {~A~shiver runs through you as you successfully fight off an infection.} {#var mipgag 1};
-	#REGEX {%0} {~Your~head throbs briefly as you successfully fight off an infection.} {#var mipgag 1};
-	#REGEX {%0} {~Your~temperature spikes as you successfully fight off an infection.} {#var mipgag 1};
-	#REGEX {%0} {~Your~palms begin to sweat as you successfully fight off an infection.} {#var mipgag 1};
-	#REGEX {%0} {~Your~neck aches slightly as you successfully fight off an infection.} {#var mipgag 1};
-
 	#NOP Mages;
 	#REGEX {%0} {~Torrential~energies stream momentarily through the nexus of stability into the material world.} {#var mipgag 1};
 	#REGEX {%0} {~Blazing~with strange energies, the nexus of stability momentarily becomes a conduit for extradimensional forces.} {#var mipgag 1};
 
 	#NOP Changelings;
-	#REGEX {%0} {tiny translucent bombardier beetle} {#var mipgag 1};
+	#REGEX {%0} {small wandering spider} {#var mipgag 1};
 
 	#NOP Hell Cows;
 	#REGEX {%0} {~A~cow falls, but the herd continues on!} {#var mipgag 1};
 	#REGEX {%0} {~The~lonesome cow topples to the ground, the herd finally slain.} {#var mipgag 1};
-
-	#NOP Knights;
-	#REGEX {%0} {~Bela~} {#var mipgag 1};
 
 	#NOP Lost Soul;
 	#REGEX {%0} {~~You try to clasp onto the diamond spectacle, but your hands fall right through!} {#var mipgag 1};
@@ -471,6 +433,9 @@
 	#NOP Zelligar's Headband;
 	#REGEX {%0} { stumbles in confusion as the headband hypnotizes } {#var mipgag 1};
 	#REGEX {%0} { stumbles in confusion as the amulet hypnotizes } {#var mipgag 1};
+
+	#NOP Jedi;
+	#REGEX {%0} { arrives at the academy } {#var mipgag 1};
 
 	#REGEX {%0} {~Korenth~} {#bell};
 	#REGEX {%0} {~Zanadu~} {#bell};
@@ -561,6 +526,7 @@
 					#line log {${logpath}/3s.chat} {$timestamp\};
 					#line log {${logpath}/3s.chat} {<178>&3<088>: &4};
 				};
+				#bell;
 				update_chat ${timestamp}<178>&3<088>: &4;
 
 				#NOP Chat Tools;
@@ -662,7 +628,7 @@
 			#case {"JuggNewbie"}		{#var {commcol} {<258>}};
 			#case {"Lottery"}		{#var {commcol} {<178>}};
 			#case {"Main"}			{#var {commcol} {<118>}};
-			#case {"Newbie"}		{#var {commcol} {<138>}};
+			#case {"Gossip"}		{#var {commcol} {<138>}};
 			#case {"Party"}			{#var {commcol} {<128>}};
 			#case {"Poll"}			{#var {commcol} {<178>}};
 			#case {"Professions"}		{#var {commcol} {<178>}};

@@ -66,10 +66,6 @@ party;
     };
 }
 
-#action {%w tells you: }{#bell}
-
-#action {^From afar, %w}{#bell}
-
 #alias {^who$}{#send {!who -l}};
 
 #alias {^who wiz$} {#send {!who -l wiz}};
