@@ -3,6 +3,7 @@
 
 #NOP ***** Set MIP ID Code **********
 #VAR {mip} {}
+#var mip[debug] 0;
 #LOOP {1} {5} {i} {
 	#MATH {temp[digit]} {1d10 - 1};
 	#VAR {mip[id]} {$mip[id]$temp[digit]}
@@ -398,7 +399,10 @@
 #NOP ***** 2 Way Communication (Tell/Emote) *****
 #ALIAS {.mipProcessBABgag} {
 	#var mipgag 0;
-
+	#IF {$mip[debug] == 1}
+	{
+		update_chat <178>BAB Debug: %0<088>;
+	};
 	#NOP Duplicate 'from' soul;
 	#REGEX {%0} {~you~} {#var mipgag 1};
 
@@ -433,10 +437,6 @@
 	#NOP Zelligar's Headband;
 	#REGEX {%0} { stumbles in confusion as the headband hypnotizes } {#var mipgag 1};
 	#REGEX {%0} { stumbles in confusion as the amulet hypnotizes } {#var mipgag 1};
-
-	#NOP Jedi;
-	#REGEX {%0} { arrives at the Academy.} {#var mipgag 1};
-	#REGEX {%0} { leaves the Academy.} {#var mipgag 1};
 
 	#REGEX {%0} {~Korenth~} {#bell};
 	#REGEX {%0} {~Zanadu~} {#bell};
@@ -586,12 +586,20 @@
 #NOP ***** Broadcast Communication (Chat/Shout) *****
 #ALIAS {.mipProcessCAAgag} {
 	#var mipgag 0;
+	#IF {$mip[debug] == 1}
+	{
+		update_chat <178>CAA Debug: %0<088>;
+	};
 
 	#NOP Party Divvy gagsd	#NOP Party Divvy;
-        #REGEX {%0} {[PARTY] GOLD divvy called by } {#var mipgag 1};
+    #REGEX {%0} {[PARTY] GOLD divvy called by } {#var mipgag 1};
 	#REGEX {%0} {[PARTY] coins called by} {#var mipgag 1};
 	#REGEX {%0} {[PARTY] Divvy of %d coins called by} {#var mipgag 1};
-        #REGEX {%0} {[PARTY] All gold divvied, total: } {#var mipgag 1};
+    #REGEX {%0} {[PARTY] All gold divvied, total: } {#var mipgag 1};
+
+	#NOP Jedi;
+	#REGEX {%0} { arrives at the Academy.} {#var mipgag 1};
+	#REGEX {%0} { leaves the Academy.} {#var mipgag 1};
 
 	#IF {$mipgag == 0} {.mipProcessCAA %0}
 }

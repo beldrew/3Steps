@@ -91,16 +91,16 @@
 	#if {"$mapping" == "on"} {
 		#replace exits {,} {;};
 		#foreach {$exits} {eachexit} {
-        		#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out")}{
-        			#nop {};
+        		#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "up")}{
+        			#echo {Excluding a: $eachexit};
         		}{
 				#map dig $eachexit;
 			};
 		};
 		#map get {roomexit} {rexit};
 		#foreach {$rexit} {eachexit} {
-        		#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")  || ("$area" == "The Sea of Chaos" && "$eachexit" == "out")}{
-        			#nop {};
+        		#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")  || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "up")}{
+					#echo {Excluding b: $eachexit};
         		}{
 				#map at {$eachexit} {
 					#map get {roomarea} {eacharea};
