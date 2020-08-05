@@ -66,6 +66,9 @@
 
 #ALIAS {db_submit}
 {
+    #if {$my[config][db][enabled] == 0}{
+        #return;
+    };
     #IF {"%0" != ""}
     {
         #VAR {db} {};
