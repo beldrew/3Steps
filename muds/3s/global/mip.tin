@@ -439,6 +439,7 @@
 	#REGEX {%0} {~Wild~snarls rend the air as the broodlings yearn for combat} {#var mipgag 1};
 	#REGEX {%0} {~Despite~your bulk, you deftly dodge the incoming strike} {#var mipgag 1};
 	#REGEX {%0} {~The~people around you admire your massive form, and they get penis envy} {#var mipgag 1};
+	#REGEX {%0} {~Powerful~bolts of electricity arc out from your body}{#var mipgag 1};
 
 	#NOP Zelligar's Headband;
 	#REGEX {%0} { stumbles in confusion as the headband hypnotizes } {#var mipgag 1};
