@@ -1,11 +1,11 @@
+#class {beldin} {kill}
 #class {beldin} {open}
 
 #var guild sii
 
-#read /Users/talir/Dropbox/3k/containsfunction.txt;
-#read /Users/talir/Dropbox/3k/deltafunction.txt;
-
 #ticker {gxp}{#send {}}{240};
+
+#send {!gset hpbar HP:$HP$ SP:$SP$ FO:$FORT$ CON:$CON$/$CONMAX$ EN:$FOE$ P:$PERC$ M:$MIT$ $NL$CH:$CHO$ GL:$CL$ GXP:$GXP$ FI:$FI$ Brood:$BROOD$ B:$BST$ $NL$OL:$OVER$ BR:$BR$ AMP:$AMP$ RT:$RT$ SH:$PS$ CL:$PC$ PG:$PG$ R:$REG$};
 
 #alias info siihelp %0
 #alias rcost siiscore stat cost
@@ -56,23 +56,24 @@
 
 
 
-#nop {gset hpbar HP:$HP$ SP:$SP$ FO:$FORT$ CON:$CON$ EN:$FOE$ P:$PERC$ M:$MIT$ $NL$CH:$CHO$ GL:$CL$ GXP:$GXP$ FI:$FI$ Brood:$BROOD$ B:$BST$ $NL$OL:$OVER$ BR:$BR$ AMP:$AMP$ RT:$RT$ SH:$PS$ CL:$PC$ PG:$PG$ R:$REG$}
-#gag {HP:%1/%2 SP:%3/%4 FO:%5/%6 CON:%7 EN:%8 P:%9 M:%10}
-#act {HP:%1/%2 SP:%3/%4 FO:%5/%6 CON:%7 EN:%8 P:%9 M:%10}{
+#nop {
+	gset hpbar HP:$HP$ SP:$SP$ FO:$FORT$ CON:$CON$/$CONMAX$ EN:$FOE$ P:$PERC$ M:$MIT$ $NL$CH:$CHO$ GL:$CL$ GXP:$GXP$ FI:$FI$ Brood:$BROOD$ B:$BST$ $NL$OL:$OVER$ BR:$BR$ AMP:$AMP$ RT:$RT$ SH:$PS$ CL:$PC$ PG:$PG$ R:$REG$
+};
+#act {HP:%1/%2 SP:%3/%4 FO:%5/%6 CON:%7/%8 EN:%9 P:%10 M:%11}{
 	#var {my[hp][current]}		{%1};
 	#var {my[hp][max]}			{%2};
+	#var {sii[maxHp]} 			{%2};
 	#var {my[sp][current]}		{%3};
 	#var {my[sp][max]}			{%4};
 	#var {my[gp1][current]}		{%5};
 	#var {my[fort][current]}	{%5};
 	#var {my[gp1][max]}			{%6};
 	#var {my[fort][max]}		{%6};
-	#var {my[gp2][current]}		{%7};
 
 	#var {my[control][current][integer]}{%7};
-	#var {my[control][max][integer]}{18};
+	#var {my[control][max][integer]}{%8};
 
-	#var {my[enemy]}		{%8};
+	#var {my[enemy]}		{%9};
 
 	#if {"$my[enemy]" == "None"}{#var my[incombat] 0}{#var my[incombat] 1};
 	#if {$my[incombat] == 1}{
@@ -81,11 +82,10 @@
                 #var {my[damagetracker][foe]}{&1};
             };
 	};
-	#var {my[perception][current]}		{%9};
-	#var {my[mitigation][current]}		{%10};
+	#var {my[perception][current]}		{%10};
+	#var {my[mitigation][current]}		{%11};
 }
 
-#gag {CH:%1 GL:%2 GXP:%3 FI: Brood:%5 B:%6 (%7)}
 #act {CH:%1 GL:%2 GXP:%3 FI: Brood:%5 B:%6 (%7)}{
 	#var my[choose][current] %1;
 	#var my[gtnl][current][integer] %2;
@@ -96,7 +96,6 @@
 	#var my[boost][status] %7;
 }
 
-#gag {CH:%1 GL:%2 GXP:%3 FI:%4 Brood:%5 B:%6 (%7)}
 #act {CH:%1 GL:%2 GXP:%3 FI:%4 Brood:%5 B:%6 (%7)}{
 	#var my[choose][current] %1;
 	#var my[gtnl][current][integer] %2;
@@ -144,7 +143,7 @@
 		!focus prevent average;
 	};
 	#if {$my[hp][current] < $my[targetlevel][panic][prevent][hp] || $my[sp][current] < $my[targetlevel][panic][prevent][sp] && $my[incombat] == 1}{
-		panic;
+		#bell;
 	};
 	update_status;
 }
