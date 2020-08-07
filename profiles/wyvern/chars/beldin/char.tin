@@ -209,13 +209,16 @@
 #alias oextra {#nop};
 #alias o {envelop};
 
+
 #action {%* dealt the killing blow to}{
 	#send {!get coins from corpse};
 	#send {!get coins};
 	oextra;
-	#showme {There is no reason to 'inch' here.};
 };
 
+#action {%*The corpse explodes as a small vicious lizard-like creature bursts forth}{#showme {There is no reason to 'inch' here.};};
+#action {%*As the corpse explodes, %* small vicious lizard-like creature bursts forth}{#showme {There is no reason to 'inch' here.};};
+#action {%*You cannot find a corpse to feed your brood}{#showme {There is no reason to 'inch' here.};};
 #alias {next %*} {
 	#action {There is no reason to 'inch' here.$}
 	{

@@ -80,7 +80,7 @@
 	};
 };
 
-#act {%*=I=%*}{#regex {%2}{%*cask of chaotic energy%*}{#map set roomnote seacask;#map set roomsymbol c;#map set roomcolor <158>;}};
+#act {%*=I=%*}{#regex {%2}{%*cask of chaotic energy%*}{#map set roomnote seacask;#map set roomsymbol c;#map set roomcolor <158>;#bell;}};
 
 #NOP Kill-Loop to find rooms with critters and no people
 
