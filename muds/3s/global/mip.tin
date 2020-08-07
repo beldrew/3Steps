@@ -433,10 +433,12 @@
 	#NOP Sii;
 	#REGEX {%0} {~Your~malicious attacks fade} {#var mipgag 1};
 	#REGEX {%0} {~The~corpse explodes as a small vicious lizard-like creature bursts forth!} {#var mipgag 1};
-	#REGEX {%0} {~One~of the of the broodlings snarls and claws the air wildly } {#var mipgag 1};
-	#REGEX {%0} {~One~of the symbiont brood takes a vicious swipe at another one } {#var mipgag 1};
+	#REGEX {%0} {~One~of the broodlings snarls and claws the air wildly} {#var mipgag 1};
+	#REGEX {%0} {~One~of the symbiont brood takes a vicious swipe at another one} {#var mipgag 1};
 	#REGEX {%0} {~The~broodlings chitter anxiously} {#var mipgag 1};
 	#REGEX {%0} {~Wild~snarls rend the air as the broodlings yearn for combat} {#var mipgag 1};
+	#REGEX {%0} {~Despite~your bulk, you deftly dodge the incoming strike} {#var mipgag 1};
+	#REGEX {%0} {~The~people around you admire your massive form, and they get penis envy} {#var mipgag 1};
 
 	#NOP Zelligar's Headband;
 	#REGEX {%0} { stumbles in confusion as the headband hypnotizes } {#var mipgag 1};

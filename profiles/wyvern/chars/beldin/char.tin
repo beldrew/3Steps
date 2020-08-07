@@ -104,8 +104,8 @@
 	#var my[brood][current] %5;
 	#var my[boost][current] %6;
 	#var my[boost][status] %7;
-}
-#gag {OL:%1 (%2) BR:%3 AMP:%4 RT:%5 SH:%6 CL:%7 PG:%8 R:%9}
+};
+
 #act {OL:%1 (%2) BR:%3 AMP:%4 RT:%5 SH:%6 CL:%7 PG:%8 R:%9}{
 	#var my[overload][current] %1;
 	#var my[overload][status] %2;
@@ -126,26 +126,32 @@
 	#math {my[targetlevel][low][prevent][sp]}{$my[sp][max] * .3};
 	#math {my[targetlevel][panic][prevent][hp]}{$my[hp][max] * .2};
 	#math {my[targetlevel][panic][prevent][sp]}{$my[sp][max] * .2};
+
 	#if {$my[sp][current] < 50 && $my[prevent][current] != "off"}{
 		#var {my[prevent][current]}{off};
+		#echo {<caf>Prevent off<099>};
 		!focus prevent off;
 	};
 	#if {$my[hp][current] < $my[targetlevel][high][prevent][hp] && $my[sp][current] > $my[targetlevel][high][prevent][sp] && $my[prevent][current] != "very low"}{
 		#var {my[prevent][current]}{very low};
+		#echo {<caf>Prevent very low<099>};
 		!focus prevent very low;
 	};
 	#if {$my[hp][current] < $my[targetlevel][mid][prevent][hp] && $my[sp][current] > $my[targetlevel][mid][prevent][sp] && $my[prevent][current] != "low"}{
 		#var {my[prevent][current]}{low};
+		#echo {<caf>Prevent low<099>};
 		!focus prevent low;
 	};
 	#if {$my[hp][current] < $my[targetlevel][low][prevent][hp] && $my[sp][current] > $my[targetlevel][low][prevent][sp] && $my[prevent][current] != "average"}{
 		#var {my[prevent][current]}{average};
+		#echo {<caf>Prevent average<099>};
 		!focus prevent average;
 	};
 	#if {$my[hp][current] < $my[targetlevel][panic][prevent][hp] || $my[sp][current] < $my[targetlevel][panic][prevent][sp] && $my[incombat] == 1}{
-		#bell;
+		#echo {<fca>Prevent panic<099>};
 	};
 	update_status;
+	#line gag;
 }
 
 #alias {update_status} {
