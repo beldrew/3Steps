@@ -21,8 +21,13 @@
 		#showme { H:$my[hp][graph] S:$my[sp][graph] G1:$my[gp1][graph] G2:$my[gp2][graph] E:$enemy[graph]} {-3};
 	};
 	#if {"$draw[gline]" == "on"} {
-		#showme { $mip[gline][1]}{-7};
-		#showme { $mip[gline][2]}{-6};
+		#if {"$draw[hpbar]" == "on"} {
+			#showme { $mip[gline][1]}{-7};
+			#showme { $mip[gline][2]}{-6};
+		}{
+			#showme { $mip[gline][1]}{-4};
+			#showme { $mip[gline][2]}{-3};
+		}
 	};
 }
 
