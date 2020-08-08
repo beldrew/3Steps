@@ -16,10 +16,14 @@
 	#format {gp2}			{%+4s} {$my[gp2][current]};
 	#format {gp2_max}		{%+4s} {$my[gp2][max]};
 	#format {ehealth}		{%+7s} {$enemy[hp]%%};
-	
-	#showme {HP:$hp/$hp_max SP:$sp/$sp_max GP1:$gp1/$gp1_max GP2:$gp2/$gp2_max E:$ehealth} {-4};
-	#showme {H:$my[hp][graph] S:$my[sp][graph] G1:$my[gp1][graph] G2:$my[gp2][graph] E:$enemy[graph]} {-3};
-	#showme {$mip[gline][1]  $mip[gline][2]} {-6}
+	#if {"$draw[hpbar]" == "on"} {
+		#showme { HP:$hp/$hp_max SP:$sp/$sp_max GP1:$gp1/$gp1_max GP2:$gp2/$gp2_max E:$ehealth} {-4};
+		#showme { H:$my[hp][graph] S:$my[sp][graph] G1:$my[gp1][graph] G2:$my[gp2][graph] E:$enemy[graph]} {-3};
+	};
+	#if {"$draw[gline]" == "on"} {
+		#showme { $mip[gline][1]}{-7};
+		#showme { $mip[gline][2]}{-6};
+	};
 }
 
 #class {miphp} {close}
