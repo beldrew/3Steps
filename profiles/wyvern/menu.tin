@@ -26,6 +26,13 @@
 #var {my[alts][4][name]}{ralit3s};
 #var {my[alts][4][guild]}{jedi};
 #var {my[alts][4][subguild]}{baadu};
+
+#echo {};
+
+#echo {5) Divit(gentech)};
+#var {my[alts][5][name]}{divit3s};
+#var {my[alts][5][guild]}{gentech};
+
 #echo {};
 
 #echo {con <number>:};

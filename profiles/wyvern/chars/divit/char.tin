@@ -1,0 +1,39 @@
+#class {divit} {kill}
+#class {divit} {open}
+
+#read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
+#read /Users/beldrew/source/3Steps/muds/3s/global/miphp.tin;
+
+#var guild gentech;
+
+#action {HP:%d/%d %*}
+{
+	update_status;
+};
+
+autok;
+
+#alias oextra {ta;};
+#var gentech[corpse] reclaim;
+
+#action {%* dealt the killing blow to}{
+	#send {!get coins from corpse};
+	$gentech[corpse];
+	#send {!get coins};
+	oextra;
+	#showme {There is no reason to 'inch' here.};
+};
+
+#alias {next %*} {
+	#action {There is no reason to 'inch' here.$}
+	{
+		#math gentech[nextDelay] {1 d 6};
+		#echo {Next delay: [$gentech[nextDelay]] Action [%1]};
+		#delay {$gentech[nextDelay]}{
+			%1;
+		};
+	};
+};
+next #bell;
+
+#class {divit} {close}
