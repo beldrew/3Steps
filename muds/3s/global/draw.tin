@@ -211,7 +211,13 @@ create_panel_alignment
 };
 
 #if {"$draw[gline]" == "on"} {
-	#draw {line} -$hpbar[height]-$gline[height]-2 1 -$hpbar[height]-$gline[height]-2 -1;
+	#if {"$draw[hpbar]" == "on"}
+	{	
+		#draw {line} -$hpbar[height]-$gline[height]-2 1 -$hpbar[height]-$gline[height]-2 -1;
+	}{
+		#draw {line} -$gline[height]-2 1 -$gline[height]-2 -1;
+		update_status;
+	}
 };
 
 #if {"$draw[hpbar]" == "on"} {
