@@ -5,7 +5,7 @@
 
 #ticker {gxp}{#send {}}{240};
 
-#send {!gset hpbar HP:$HP$ SP:$SP$ FO:$FORT$ CON:$CON$/$CONMAX$ EN:$FOE$ P:$PERC$ M:$MIT$ $NL$CH:$CHO$ GL:$CL$ GXP:$GXP$ FI:$FI$ Brood:$BROOD$ B:$BST$ $NL$OL:$OVER$ BR:$BR$ AMP:$AMP$ RT:$RT$ SH:$PS$ CL:$PC$ PG:$PG$ R:$REG$};
+#send {!gset hpbar HP:$HP$ SP:$SP$ FO:$FORT$ CON:$CON$/$CONMAX$ EN:$FOE$ P:$PERC$ MIT:$MIT$ $NL$CH:$CHO$ GL:$CL$ GXP:$GXP$ FI:$FI$ Brood:$BROOD$ B:$BST$ M:$MAS$ $NL$OL:$OVER$ BR:$BR$ AMP:$AMP$ RT:$RT$ SH:$PS$ CL:$PC$ PG:$PG$ R:$REG$};
 
 #alias info siihelp %0
 #alias rcost siiscore stat cost
@@ -56,10 +56,8 @@
 
 
 
-#nop {
-	gset hpbar HP:$HP$ SP:$SP$ FO:$FORT$ CON:$CON$/$CONMAX$ EN:$FOE$ P:$PERC$ M:$MIT$ $NL$CH:$CHO$ GL:$CL$ GXP:$GXP$ FI:$FI$ Brood:$BROOD$ B:$BST$ $NL$OL:$OVER$ BR:$BR$ AMP:$AMP$ RT:$RT$ SH:$PS$ CL:$PC$ PG:$PG$ R:$REG$
-};
-#act {HP:%1/%2 SP:%3/%4 FO:%5/%6 CON:%7/%8 EN:%9 P:%10 M:%11}{
+
+#act {HP:%1/%2 SP:%3/%4 FO:%5/%6 CON:%7/%8 EN:%9 P:%10 MIT:%11}{
 	#var {my[hp][current]}		{%1};
 	#var {my[hp][max]}			{%2};
 	#var {sii[maxHp]} 			{%2};
@@ -86,7 +84,7 @@
 	#var {my[mitigation][current]}		{%11};
 }
 
-#act {CH:%1 GL:%2 GXP:%3 FI: Brood:%5 B:%6 (%7)}{
+#act {CH:%1 GL:%2 GXP:%3 FI: Brood:%5 B:%6 (%7) M:%8}{
 	#var my[choose][current] %1;
 	#var my[gtnl][current][integer] %2;
 	#var my[gxp][round][integer] %3;
@@ -219,6 +217,7 @@
 #action {%*The corpse explodes as a small vicious lizard-like creature bursts forth}{#showme {There is no reason to 'inch' here.};};
 #action {%*As the corpse explodes, %* small vicious lizard-like creature bursts forth}{#showme {There is no reason to 'inch' here.};};
 #action {%*You cannot find a corpse to feed your brood}{#showme {There is no reason to 'inch' here.};};
+#action {%*You have no way of sampling anything at the moment.}{#showme {There is no reason to 'inch' here.};};
 #alias {next %*} {
 	#action {There is no reason to 'inch' here.$}
 	{
