@@ -204,9 +204,8 @@
 	};
 };
 
-#alias oextra {#nop};
+#alias oextra {ta};
 #alias o {envelop};
-
 
 #action {%* dealt the killing blow to}{
 	#send {!get coins from corpse};

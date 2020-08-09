@@ -91,17 +91,17 @@
 	#if {"$mapping" == "on"} {
 		#replace exits {,} {;};
 		#foreach {$exits} {eachexit} {
-        		#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
-        			#echo {Excluding a: $eachexit};
-        		}{
+			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
+				#echo {Excluding a: $eachexit};
+			}{
 				#map dig $eachexit;
 			};
 		};
 		#map get {roomexit} {rexit};
 		#foreach {$rexit} {eachexit} {
-        		#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")  || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
-					#echo {Excluding b: $eachexit};
-        		}{
+			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")  || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
+				#echo {Excluding b: $eachexit};
+			}{
 				#map at {$eachexit} {
 					#map get {roomarea} {eacharea};
 					#map get {roomvnum} {eachroom};
