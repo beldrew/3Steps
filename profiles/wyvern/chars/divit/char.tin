@@ -11,8 +11,6 @@
 	update_status;
 };
 
-autok;
-
 #alias oextra {ta;};
 #var gentech[corpse] reclaim;
 
