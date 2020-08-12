@@ -104,10 +104,11 @@
 	}; #elseif {$idle < 600} {
 		#screen clear square 21 1 -8 1
 	};
-	#if {$bot && $idle > $IdleLimit} {
-		.stop;
-		#unvar bot;
-		#delay {gohome} {go home} {100}
+	#if {$idle > $IdleLimit} {
+        #bell;
+        time;
+        #echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};
+        #delay {2}{#end};
 	};
 	update_caption
 } {1}
