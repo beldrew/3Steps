@@ -1,6 +1,10 @@
-#class {dathit} {open}
+#class {dathit} {kill};
+#class {dathit} {open};
 
 #var guild jedi;
+
+#read /Users/talir/Dropbox/3k/hooligan.txt;
+#read /home/beldrew/Dropbox/3k/hooligan.txt;
 
 #gag {|%sReflex:%snothing%s0%s|};
 #gag {|%sImpulse:%snothing%s0%s|};
