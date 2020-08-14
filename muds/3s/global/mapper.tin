@@ -93,6 +93,7 @@
 		#foreach {$exits} {eachexit} {
 			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
 				#echo {Excluding a: $eachexit};
+				#continue;
 			}{
 				#map dig $eachexit;
 			};
@@ -101,6 +102,7 @@
 		#foreach {$rexit} {eachexit} {
 			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")  || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
 				#echo {Excluding b: $eachexit};
+				#continue;
 			}{
 				#map at {$eachexit} {
 					#map get {roomarea} {eacharea};
@@ -147,47 +149,47 @@
 	#var player_room 0;
 	#var critter_room 0;
 	#unvar critter_array;
-        #var room_dirs %3;
-        #replace {room_dirs}{,}{;};
-        #var {room_short_desc}{%1};
-        #regex {$room_short_desc}{=S=%* (%*)}{
-        	#var {room_short_desc}{&1};
-        };
-        #list {room_dirs}{create}{$room_dirs};
-        #list {room_dirs}{find}{u}{upexit};
-        #if {$upexit == 0}{
-                #list {room_dirs}{find}{exit}{upexit};
-        };
-        #if {$upexit == 0}{
-                #list {room_dirs}{find}{portal}{upexit};
-        };
-        #if {$upexit == 0}{
-                #list {room_dirs}{find}{menu}{upexit};
-        };
-        #if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")}{
-                #map set roomnote exit;#map set roomsymbol x;#map set roomcolor <128>;
-        };
-        #list {room_dirs}{find}{$reversedir}{reverse_dir};
-        #list {room_dirs}{size}{room_exits};
-        #if {$stepper2 == 1}{
-                #if {${domove2} == 1}{
-                	#if {"$mapping" == "on"}{
-                		#delay {0.15}{kill-loop};
-                	}{
+	#var room_dirs %3;
+	#replace {room_dirs}{,}{;};
+	#var {room_short_desc}{%1};
+	#regex {$room_short_desc}{=S=%* (%*)}{
+		#var {room_short_desc}{&1};
+	};
+	#list {room_dirs}{create}{$room_dirs};
+	#list {room_dirs}{find}{u}{upexit};
+	#if {$upexit == 0}{
+			#list {room_dirs}{find}{exit}{upexit};
+	};
+	#if {$upexit == 0}{
+			#list {room_dirs}{find}{portal}{upexit};
+	};
+	#if {$upexit == 0}{
+			#list {room_dirs}{find}{menu}{upexit};
+	};
+	#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")}{
+			#map set roomnote exit;#map set roomsymbol x;#map set roomcolor <128>;
+	};
+	#list {room_dirs}{find}{$reversedir}{reverse_dir};
+	#list {room_dirs}{size}{room_exits};
+	#if {$stepper2 == 1}{
+		#if {${domove2} == 1}{
+			#if {"$mapping" == "on"}{
+				#delay {0.15}{kill-loop};
+			}{
 				#if {$autoqueue == 1}{
 					#if {$room_index <= $area_size}{
-                                		#delay {0.05}{kill-loop};
-                                	}{
+						#delay {0.05}{kill-loop};
+					}{
 						#math {targetarea}{${areaselector[current]} +1};
 						#if {$targetarea > $queue_size}{#var {targetarea}{1}};
 						#var {do_queue2}{1};
 						#delay {0.15}{next_area_function};
 					};
 				}{
-                                	#delay {0.05}{kill-loop};
-                                };
-                	};
-                };
+					#delay {0.05}{kill-loop};
+				};
+			};
+		};
 	}{
 		#if {${domove2} == 1}{
 			dir_selection;
@@ -212,15 +214,15 @@
 			#unvar long;
 			#act {%%1} {
 				#if {@cartcheck{%%1}} {
-						#nop
-					} {
-						#var long {${long}%%1 }
+					#nop
+				} {
+					#var long {${long}%%1 }
 				}
 			} {2}
 		};
 		#map get {roomvnum} {gonum};
 		#map goto $gonum;
-	}
+	};
 } {6}
 
 #act {=X={.*}} {
@@ -278,11 +280,11 @@
 	#if {"${critter[whitelist]}" != ""}{
 		#unvar {critter[whitelist]};
 	};
-        #map flag static on;
-        #var domove2 0;
+     #map flag static on;
+    #var domove2 0;
 	#map find {roomnote} {%0%*};
-        #map get roomvnum returnroom;
-        #var returnpathroom $room_num;
+    #map get roomvnum returnroom;
+    #var returnpathroom $room_num;
 	#path run;
 	#var {return_room_index}{${room_index}};
 	#var {path_index}{0};
@@ -306,9 +308,9 @@
 };
 
 #alias goback {
-        #map run $returnroom;
-        #var {room_num}{$returnpathroom};
-        #var {do_return}{1};
+    #map run $returnroom;
+    #var {room_num}{$returnpathroom};
+    #var {do_return}{1};
 	#map get {roomarea}{area};
 	#if {"$area" != ""}{
 		make_roomlist {${area}};
