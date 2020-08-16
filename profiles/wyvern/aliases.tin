@@ -32,6 +32,11 @@ autok;
 
 party;
 
+#action {The Daemon Blade screams at you, 'I need SOULS!!'}{steal};
+#gag {%*You feel the Daemon Blade come alive as you cut deep into };
+#gag {%*The Daemon Blade is licked with black flame as you strike!};
+#gag {%*The Daemon Blade gouges deeply into };
+
 #ungag {^You hit %1.};
 #unact {^You hit %1 %d times for %3 damage.};
 #unact {^You hit %1 %d time for %3 damage.};
