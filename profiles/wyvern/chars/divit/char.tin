@@ -4,6 +4,9 @@
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
+#read /Users/talir/Dropbox/3k/hooligan.txt;
+#read /home/beldrew/Dropbox/3k/hooligan.txt;
+
 #var guild gentech;
 
 #action {HP:%d/%d %*}
