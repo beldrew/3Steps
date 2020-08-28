@@ -385,17 +385,19 @@
 }
 
 #ALIAS {.mipProcessGlineSii} {
-	#IF {%1 == 1} {
-		#REGEX {$mip[gline][1]}	{Regen: %w}	{#VAR {my[regen]}		{&1}}
-	}; #ELSEIF {%1 == 2} {
-		#REGEX {$mip[gline][2]}	{Con:%d/%d}	{
-			#VAR {my[control][current]}	{&1};
-			#VAR {my[control][max]}		{&2}
-		}
-	}; #ELSE {
-		#ECHO {<171> Invalid Gline Number <088>}
-	}
-}
+	#IF {%1 == 1} 
+	{
+		#replace {mip[gline][1]} {_O}{ O};
+	}; 
+	#ELSEIF {%1 == 2} 
+	{
+		#replace {mip[gline][2]}{\. o O ( }{ };
+		#replace {mip[gline][2]}{ ) O o \.}{};
+	}; 
+	#ELSE {
+		#ECHO {<171> Invalid Gline Number <088>};
+	};
+};
 
 #NOP ***** 2 Way Communication (Tell/Emote) *****
 #ALIAS {.mipProcessBABgag} {

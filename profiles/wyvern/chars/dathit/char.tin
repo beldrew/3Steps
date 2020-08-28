@@ -305,8 +305,13 @@ next #bell;
 		#showme {    ${my[hp][graph]}   ${my[sp][graph]}  ${my[gp1][graph]}   ${my[gp2][graph]} E: ${enemy[graph]}} {-3};
 	};
 	#if {"$draw[gline]" == "on"} {
-		#showme { $mip[gline][2]} {-6};
-		#showme { $mip[gline][1]} {-7};
+		#if {"$draw[hpbar]" == "on"} {
+			#showme { $mip[gline][1]}{-7};
+			#showme { $mip[gline][2]}{-6};
+		}{
+			#showme { $mip[gline][1]}{-4};
+			#showme { $mip[gline][2]}{-3};
+		}
 	};
 }
 
