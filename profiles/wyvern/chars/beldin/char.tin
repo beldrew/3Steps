@@ -107,16 +107,16 @@
 	#var my[boost][current] %6;
 	#var my[boost][status] %7;
 
-	#if {$my[brood][current] >= $my[brood][max] && "$my[ktrig]" != "k1"}
-	{
-		#send {k1};
-		#var my[ktrig] k1;
-	};
-	#IF {$my[brood][current] < $my[brood][max]  && "$my[ktrig]" != "k4"}
-	{
-		#send {k4};
-		#var my[ktrig] k4;
-	};
+	#NOP #IF {$my[brood][current] >= $my[brood][max] && "$my[ktrig]" != "k1"}
+	#NOP {
+	#NOP 	#send {k1};
+	#NOP 	#var my[ktrig] k1;
+	#NOP };
+	#NOP #ELSEIF {$my[brood][current] < $my[brood][max]  && "$my[ktrig]" != "k4"}
+	#NOP {
+	#NOP 	#send {k4};
+	#NOP 	#var my[ktrig] k4;
+	#NOP };
 };
 
 #act {OL:%1 (%2) BR:%3 AMP:%4 RT:%5 SH:%6 CL:%7 PG:%8 R:%9}{
