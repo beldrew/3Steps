@@ -7,56 +7,6 @@
 
 #send {!gset hpbar HP:$HP$ SP:$SP$ FO:$FORT$ CON:$CON$/$CONMAX$ EN:$FOE$ P:$PERC$ MIT:$MIT$ $NL$CH:$CHO$ GL:$CL$ GXP:$GXP$ FI:$FI$ Brood:$BROOD$ B:$BST$ M:$MAS$ $NL$OL:$OVER$ BR:$BR$ AMP:$AMP$ RT:$RT$ SH:$PS$ CL:$PC$ PG:$PG$ R:$REG$};
 
-#alias info siihelp %0
-#alias rcost siiscore stat cost
-#alias gskills siiscore skills
-#alias gs2 siiscore skills
-#alias gs3 siiscore forms
-#alias gs4 siiscore history
-#alias gs5 siiscore mastery
-#alias pstats siiscore combat
-#act {You step out of the cubicle and adjust to your new senses.}{doshield;!psipulse}
-
-#var my[desired][shield] {adapt};
-#alias swapshield {
-	#if {"${my[desired][shield]}" == "reflect"}{
-			#var my[desired][shield] {absorb};
-			#echo {Absorb};
-	};
-	#if {"${my[desired][shield]}" == "augment"}{
-			#var my[desired][shield] {reflect};
-			#echo {Reflect};
-	};
-	#if {"${my[desired][shield]}" == "adapt"}{
-			#var my[desired][shield] {augment};
-			#echo {Augment};
-	};
-	#if {"${my[desired][shield]}" == "protect abrasive"}{
-			#var my[desired][shield] {adapt};
-			#echo {Adapt};
-	};
-	#if {"${my[desired][shield]}" == "protect impact"}{
-			#var my[desired][shield] {protect abrasive};
-			#echo {Protect Abrasive};
-	};
-	#if {"${my[desired][shield]}" == "absorb"}{
-			#var my[desired][shield] {protect impact};
-			#echo {Protect Impact};
-	};
-	#echo {doshield to activate your new shield};
-};
-
-#alias {doshield}{
-	!shield off;
-	!boost;
-	!shield ${my[desired][shield]};
-	#echo;
-	#echo {swapshield to switch};
-};
-
-
-
-
 #act {HP:%1/%2 SP:%3/%4 FO:%5/%6 CON:%7/%8 EN:%9 P:%10 MIT:%11}{
 	#var {my[hp][current]}		{%1};
 	#var {my[hp][max]}			{%2};
@@ -92,13 +42,10 @@
 	#var my[brood][current] %5;
 	#var my[boost][current] %6;
 	#var my[boost][status] %7;
-}
+};
 
-#var my[control][level] 12;
-#math my[brood][max] {$my[control][level] * 2};
-#var my[ktrig] k1;
-
-#act {CH:%1 GL:%2 GXP:%3 FI:%4 Brood:%5 B:%6 (%7)}{
+#act {CH:%1 GL:%2 GXP:%3 FI:%4 Brood:%5 B:%6 (%7)}
+{
 	#var my[choose][current] %1;
 	#var my[gtnl][current][integer] %2;
 	#var my[gxp][round][integer] %3;
@@ -106,17 +53,6 @@
 	#var my[brood][current] %5;
 	#var my[boost][current] %6;
 	#var my[boost][status] %7;
-
-	#NOP #IF {$my[brood][current] >= $my[brood][max] && "$my[ktrig]" != "k1"}
-	#NOP {
-	#NOP 	#send {k1};
-	#NOP 	#var my[ktrig] k1;
-	#NOP };
-	#NOP #ELSEIF {$my[brood][current] < $my[brood][max]  && "$my[ktrig]" != "k4"}
-	#NOP {
-	#NOP 	#send {k4};
-	#NOP 	#var my[ktrig] k4;
-	#NOP };
 };
 
 #act {OL:%1 (%2) BR:%3 AMP:%4 RT:%5 SH:%6 CL:%7 PG:%8 R:%9}{
