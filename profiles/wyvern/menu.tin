@@ -35,6 +35,13 @@
 
 #echo {};
 
+#echo {6) Krathit(jedi)(krath)};
+#var {my[alts][6][name]}{krathit3s};
+#var {my[alts][6][guild]}{jedi};
+#var {my[alts][6][subguild]}{krath};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};
