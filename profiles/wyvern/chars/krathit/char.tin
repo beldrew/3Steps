@@ -6,6 +6,10 @@
 #read /Users/talir/Dropbox/3k/hooligan.txt;
 #read /home/beldrew/Dropbox/3k/hooligan.txt;
 
+#act {%*You attack %*}{cm;ds};
+#act {%*GEE, what are we fighting then}{cm;ds};
+#action {%*You lash out at }{#delay {2.3}{cm;ds}};
+
 #gag {|%sReflex:%snothing%s0%s|};
 #gag {|%sImpulse:%snothing%s0%s|};
 #gag {^%sCrystals installed:%s$};
@@ -172,6 +176,29 @@ next #bell;
 #var jedi[dissForceAt] 75;
 #var jedi[pyreForceAt] 50;
 #var jedi[lstatsed] 0;
+#var jedi[autoAheal] 1;
+
+#alias {^aah$}
+{
+	#IF {$jedi[autoAheal] == 0}
+	{
+		#echo {Auto Accelerated Healing};
+		#var jedi[autoAheal] 1;
+		#if {$jedi[ahealOn] == 0}
+		{
+			#send {!focus accelerated healing};
+			#var jedi[ahealOn] 1;
+		};
+	}{
+		#echo {Auto Accelerated Healing off};
+		#var jedi[autoAheal] 0;
+		#if {$jedi[ahealOn] == 1}
+		{
+			#send {!focus accelerated healing};
+			#var jedi[ahealOn] 0;
+		};
+	};
+};
 
 #ACTION {C[%*\%] F[%*\%] N[%d(%d)]|%*}
 {
