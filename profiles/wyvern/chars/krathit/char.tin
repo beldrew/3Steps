@@ -176,7 +176,7 @@ next #bell;
 #var jedi[dissForceAt] 75;
 #var jedi[pyreForceAt] 50;
 #var jedi[lstatsed] 0;
-#var jedi[autoAheal] 1;
+#var jedi[autoAheal] 0;
 
 #alias {^aah$}
 {
