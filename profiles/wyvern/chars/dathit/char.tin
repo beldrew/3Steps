@@ -50,11 +50,39 @@
 
 #alias oextra {ta};
 
-#action {%*Dathit dealt the killing blow to}{
+#var jedi[autoCorpse] 1;
+#alias {^aa$}{
+	#IF {$jedi[autoCorpse] == 1}
+	{
+		#var jedi[autoCorpse] 0;
+		#echo {Auto-absorb off};
+	}{
+		#var jedi[autoCorpse] 1;
+		#echo {Auto-absorb on};
+	}
+}
+
+
+#action {%*dealt the killing blow to}{
 	#send {!focus clear mind};
-	#send {!wrap corpse quiet};
-	#send {!focus absorb energy};
-	#send {!get coins};
+	#if {$jedi[autoCorpse] == 1}
+	{
+		#send {!wrap corpse quiet};
+		#send {!focus absorb energy};
+	};
+	#send {!divvy gold};
+	#IF {$jedi[fightdmg] > 0}
+	{
+		#echo {Fight total dmg: $jedi[fightdmg]};
+		#echo {Fight rounds: $jedi[fightrounds]};
+		#math {jedi[fightavg]} {$jedi[fightdmg] / $jedi[fightrounds]}; 
+		#echo {Fight avg dmg: $jedi[fightavg]};
+	};
+	#delay {2}{
+		#var jedi[fightdmg] 0;
+		#var jedi[fightrounds] 0;
+		#var jedi[fightavg] 0;
+	};
 	oextra;
 	#send {!focus hibernation trance for on};
 };
