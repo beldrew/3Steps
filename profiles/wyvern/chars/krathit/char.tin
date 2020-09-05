@@ -80,12 +80,17 @@
 #gag {The clash of combat interrupts your concentration.};
 
 #alias rld {repair ruby\;lightdaggers};
+#alias rlf {repair ruby\;lightstaff};
 
 #sub {Ruby sparks fly from your %* as you strike your foe.}{<119>Ruby<099> sparks fly from your %1 as you strike your foe.}
 
 #sub {~\e[0mKrathit's ruby light daggers%*}{*Krathit's <119>ruby<099> lightdaggers%1};
 #sub {~\e[0m\e[31mKrathit's ruby light daggers%*}{<019>*Krathit's <119>ruby<019> lightdaggers%1<099>};
 #sub {~\e[0m 1 Krathit's ruby light daggers}{ 1 *Krathit's <119>ruby<099> lightdaggers%1};
+
+#sub {~\e[0mKrathit's ruby lightstaff%*}{*Krathit's <119>ruby<099> lightstaff%1};
+#sub {~\e[0m\e[31mKrathit's ruby lightstaff%*}{<019>*Krathit's <119>ruby<019> lightstaff%1<099>};
+#sub {~\e[0m 1 Krathit's ruby lightstaff}{ 1 *Krathit's <119>ruby<099> lightstaff%1};
 
 #alias {next %*} {
 	#action {There is no reason to 'inch' here.$}
