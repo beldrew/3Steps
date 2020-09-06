@@ -456,6 +456,7 @@
 	#REGEX {%0} {~Zanadu~} {#bell};
 	#REGEX {%0} {~Simon~} {#bell};
 	#REGEX {%0} {~Setinekht~} {#bell};
+	#REGEX {%0} {~Wildduces~} {#var mipgag 1};
 	#IF {$mipgag == 0} {.mipProcessBAB %0}
 }
 
