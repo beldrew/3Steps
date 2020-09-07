@@ -328,13 +328,23 @@
 }
 
 #ALIAS {.mipProcessGlineJedi} {
-	#IF {%1 == 1} {
-		#REGEX {GXP:%s{[\d\.]+}\%}		{#VAR {my[gxp][current]}	{&2}};
-	}; #ELSEIF {%1 == 2} {#NOP
-	}; #ELSE {
+	#IF {%1 == 1}
+	{
+		#NOP {};
+	}; 
+	#ELSEIF {%1 == 2}
+	{
+		#REPLACE {mip[gline][2]}{Controlling }{C};
+		#REPLACE {mip[gline][2]}{Dodging}{Dodge};
+		#REPLACE {mip[gline][2]}{Dissipating}{Diss};
+		#REPLACE {mip[gline][2]}{Hibernation }{H};
+	}; 
+	#ELSE 
+	{
 		#ECHO {<171 Invalid Gline Number <088>}
 	}
-}
+};
+
 #ALIAS {.mipProcessGlineJuggernaut} {
 	#IF {%1 == 1} {
 		#REGEX {$mip[gline][1]} {Ammo:\[%d/%d/%d/%d/%d\] <838>Gxp: %d.%d\%<099> Hits: \[%d\] <868>Coffin: %d/%d} {
