@@ -460,7 +460,7 @@
 	#REGEX {%0} { stumbles in confusion as the headband hypnotizes } {#var mipgag 1};
 	#REGEX {%0} { stumbles in confusion as the amulet hypnotizes } {#var mipgag 1};
 
-	#NOP warders
+	#NOP warders;
 	#REGEX {%0} {~Mellaous~salutes his fallen foe}{#var mipgag 1};
 
 	#REGEX {%0} {~Korenth~} {#bell};
