@@ -42,6 +42,13 @@
 
 #echo {};
 
+#echo {7) Sithit(jedi)(sith)};
+#var {my[alts][7][name]}{sithit3s};
+#var {my[alts][7][guild]}{jedi};
+#var {my[alts][7][subguild]}{sith};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};

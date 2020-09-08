@@ -558,55 +558,6 @@
 				};
 				#bell;
 				update_chat ${timestamp}<178>&3<088>: &4;
-
-				#NOP Chat Tools;
-				#if  {$idle <= 900} {
-					#NOP 8Inix;
-					#if {"$8inix" == "on"} {
-						#regex {$mip[comm][data]} {%i8inix} {
-							do8inix
-						}
-					};
-
-					#NOP IDefine;
-					#if {"$idefine" == "on"} {
-						#regex {$mip[comm][data]} {%iidefine} {
-							dodefine
-						}
-					};
-
-					#NOP UDefine;
-					#if {"$udefine" == "on"} {
-						#regex {$mip[comm][data]} {%iudefine} {
-							doudefine
-						}
-					};
-
-					#NOP ADDS;
-					#if {"$adds" == "on"} {
-						#regex {$mip[comm][data]} {%iiwx} {
-							doadds
-						}
-					};
-
-					#NOP Stocks;
-					#if {"$stocks" == "on"} {
-						#regex {$mip[comm][data]} {%iistocks} {
-							dostocks
-						} {
-							#regex {$mip[comm][data]} {%iistock} {
-								dostock
-							}
-						}
-					};
-
-					#NOP Crypto;
-					#if {"$crypto" == "on"} {
-						#regex {$mip[comm][data]} {%i: icrypto} {
-							docrypto
-						}
-					}
-				}
 			}
 		}
 	}
