@@ -3,9 +3,10 @@
 #echo {Alts:};
 #echo {};
 
-#echo {1) Goo(changeling)};
-#var {my[alts][1][name]}{goo3s};
-#var {my[alts][1][guild]}{changeling};
+#echo {1) Talir(angel)(fallen)};
+#var {my[alts][1][name]}{talir3s};
+#var {my[alts][1][guild]}{angel};
+#var {my[alts][1][subguild]}{fallen};
 
 #echo {};
 
@@ -46,6 +47,12 @@
 #var {my[alts][7][name]}{sithit3s};
 #var {my[alts][7][guild]}{jedi};
 #var {my[alts][7][subguild]}{sith};
+
+#echo {};
+
+#echo {10) Goo(changeling)};
+#var {my[alts][10][name]}{goo3s};
+#var {my[alts][10][guild]}{changeling};
 
 #echo {};
 

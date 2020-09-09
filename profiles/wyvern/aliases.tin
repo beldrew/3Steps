@@ -19,7 +19,7 @@
 
 
 #alias gsea {chaos;enter;e;e;e;s;s;e;e;n;e;e;e;s;s;s;taste ooze};
-#alias bsea {out;n;n;w;w;w;s;w;w;n;n;w;w;w;vortex;home};
+#alias bsea {retreat from the sea;out;n;n;w;w;w;s;w;w;n;n;w;w;w;vortex;home};
 
 #alias gspiders {fantasy;portal square;#12 w;leave;#4 w;#6 n;#6 w;s;d};
 #alias bspiders {u;n;#6 e;#6 s;#4 e;enter;#12 e;portal;home};
