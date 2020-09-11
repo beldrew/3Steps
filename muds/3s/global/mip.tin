@@ -108,7 +108,11 @@
         #bell;
         time;
         #echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};
-        #delay {2}{#end};
+        #delay {1}
+		{
+			#send {retreat from the sea};
+			#end;
+		};
 	};
 	update_caption
 } {1}
