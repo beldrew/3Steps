@@ -414,7 +414,7 @@
 	#var mipgag 0;
 	#IF {$mip[debug] == 1}
 	{
-		update_chat <178>BAB Debug: %0<088>;
+		update_chat <178>BAB Gag Debug: %0<088>;
 	};
 	#NOP Duplicate 'from' soul;
 	#REGEX {%0} {~you~} {#var mipgag 1};
@@ -465,6 +465,7 @@
 
 	#NOP bards;
 	#REGEX {%0} {smiles happily}{#var mipgag 1};
+	#REGEX {%0} {You notice that people can now see you}{#var mipgag 1};
 
 	#REGEX {%0} {~Korenth~} {#bell};
 	#REGEX {%0} {~Zanadu~} {#bell};
@@ -527,6 +528,10 @@
 }
 
 #ALIAS {.mipProcessBAB} {
+	#IF {$mip[debug] == 1}
+	{
+		update_chat <178>BAB Debug: %0<088>;
+	};
 	#REGEX {%1} {{(.*)\~(.*)\~(.*)}} {
 		#IF {"&3" != "0"} {
 			#var mip[comm][data]	{&4};
@@ -568,7 +573,7 @@
 	#var mipgag 0;
 	#IF {$mip[debug] == 1}
 	{
-		update_chat <178>CAA Debug: %0<088>;
+		update_chat <178>CAA Gag Debug: %0<088>;
 	};
 
 	#NOP Party Divvy gagsd	#NOP Party Divvy;
@@ -584,6 +589,10 @@
 	#IF {$mipgag == 0} {.mipProcessCAA %0}
 }
 #ALIAS {.mipProcessCAA} {
+	#if {$mip[debug] == 1}
+	{
+		update_chat <178>CAA Debug: %0<088>;
+	};
 	#REGEX {%1} {{(.*)\~(.*)\~(.*)\~(.*)}} {
 		#var {mip[comm][command]}	{&2};
 		#var {mip[comm][line]}		{&3};
