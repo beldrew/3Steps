@@ -119,6 +119,7 @@ srl pstats;
 #var autoneutral 1;
 #var autoevil 1;
 #var autocalledshot 0;
+#var autominstrel 1;
 #action {G2S:%d S:%d(%d%) <%*>  [[ %* ]]}{
     #variable {deltaGxp} @delta{GXP;%1};
     #variable {deltaGxp} @colorgxpdelta{$deltaGxp};
@@ -333,6 +334,10 @@ srl pstats;
             #return;
         };
     };
+	#if {$autominstrel == 1 && $performing == 0}
+	{
+        #send {!perform minstrel boy};
+	};
 	update_status;
     #line gag;
 };
@@ -358,6 +363,17 @@ srl pstats;
         #return $cdelta;
     };
     #return %1;
+};
+
+#alias amb {
+  #if {$autominstrel == 0}
+  {
+    #var autominstrel 1;
+    #echo {Auto-Minstrel Boy On};
+  }{
+    #var autominstrel 0;
+    #echo {Auto-Minstrel Boy Off};
+  };
 };
 
 #alias acs {
