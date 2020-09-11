@@ -112,7 +112,7 @@ srl pstats;
 #var spastic 0;
 #var autoblind 0;
 #var autocloud 1;
-#var autospastic 0;
+#var autospastic 1;
 #var autoheat 1;
 #var autofrost 1;
 #var autogood 1;
