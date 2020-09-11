@@ -14,6 +14,10 @@
 
 #gag {Um. Like, you are already...};
 
+#gag {Not in combat, duh.};
+
+#gag {You are not performing any song...?};
+
 #alias {^challenge all$}
 {
     challenge grundar;
@@ -121,6 +125,23 @@ srl pstats;
 
     #var performing @contains{%4;{%*P:%*}};
 
+	#if{$smiles >= 4 && $smilePercent >= 25 && $performing == 0}
+	{
+		#send {!perform smile};
+	};
+	#elseif{$smiles >= 3 && $smilePercent >= 50 && $performing == 0}
+	{
+		#send {!perform smile};
+	};
+	#elseif{$smiles >= 2 && $smilePercent >= 75 && $performing == 0}
+	{
+		#send {!perform smile};
+	};
+	#elseif{$smiles >= 1 && $smilePercent >= 99 && $performing == 0}
+	{
+		#send {!perform smile};
+	};
+	
     #var buffs %5;
 
     #var percent \%%;
