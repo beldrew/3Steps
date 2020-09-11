@@ -334,7 +334,7 @@ srl pstats;
             #return;
         };
     };
-	#if {$autominstrel == 1 && $performing == 0}
+	#if {$autominstrel == 1 && $my[gp2][current] >=75 && $performing == 0}
 	{
         #send {!perform minstrel boy};
 	};
