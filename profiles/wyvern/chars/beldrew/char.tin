@@ -101,6 +101,8 @@ srl pstats;
 #gag {^of the attack.$};
 #sub {You blink out just as the attack strikes!}{Blink};
 
+#action {You are too drained to cast that spell.}{#if {$smiles > 0}{#send {!perform smile};}};
+
 #var buffs -;
 #alias actives {#echo {[ $buffs ]}};
 #alias ac {actives};
