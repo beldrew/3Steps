@@ -1,0 +1,485 @@
+#class {beldrew} {kill}
+#class {beldrew} {open}
+
+#read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
+#read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
+
+#var guild bard;
+
+
+#sub {This armor has special defense against melee attacks.}{This armor has <129>special defense<099> against <119>melee<099> attacks.};
+
+#alias {^challenge all$}
+{
+    challenge grundar;
+    challenge sholan;
+    challenge crae;
+    challenge beloch;
+    challenge aranow;
+    challenge heorki;
+    challenge noeque;
+    challenge yoeln;
+};
+
+!party;
+
+srl pstats;
+
+!first impression;
+!hl;
+!cast floating disc;
+#delay {2.5}{!cast light};
+
+#alias performall {
+    !cease;
+    !cc;
+    !heal;
+    #echo {Hero};
+    !perform hero for beldrew;
+    #ignore actions on;
+    #delay {114}{
+        #echo {Memory};
+        !perform memory for beldrew;
+        #ignore actions on;
+        #delay {78}
+        {
+            #echo {Son of man};
+            !perform son of man for beldrew;
+            #ignore actions on;
+            #delay {82}
+            {
+                #echo {Let it be};
+                !perform let it be for beldrew;
+                #ignore actions on;
+                #delay {122}
+                {
+                    #echo {Naked Sunday};
+                    !perform naked sunday for beldrew;
+                    #ignore actions on;
+                    #delay {42}
+                    {
+                        #bell;
+                        !hl;
+                    };
+                };
+            };
+        };
+    };
+};
+
+#ALIAS {bogre}
+{
+    e;
+    u;
+    se;
+    give amulet to mage;
+    e;
+    e;
+    e;
+    e;
+    n;
+    n;
+    n;
+    w;
+    w;
+    portal;
+    home;
+    identify ring;
+}
+{5}
+
+#sub {With swiftness unmatched, you tumble in the nick of time to avoid the brunt}{Dodge};
+#gag {^of the attack.$};
+#sub {You blink out just as the attack strikes!}{Blink};
+
+#var buffs -;
+#alias actives {#echo {[ $buffs ]}};
+#alias ac {actives};
+
+#var blinded 0;
+#var cloud 0;
+#var spastic 0;
+#var autoblind 0;
+#var autocloud 1;
+#var autospastic 0;
+#var autoheat 1;
+#var autofrost 1;
+#var autocalledshot 0;
+#action {G2S:%d S:%d(%d%) <%*>  [[ %* ]]}{
+    #variable {deltaGxp} @delta{GXP;%1};
+    #variable {deltaGxp} @colorgxpdelta{$deltaGxp};
+    #var smiles %2;
+    #var smilePercent %3;
+
+    #NOP {Doesn't seem to work};
+    #NOP {
+        #IF {"%4" != ""}{
+            #var songCounter %4;
+        }{
+            #var songCounter -;
+        };
+    };
+
+    #var performing @contains{%4;{%*P:%*}};
+
+    #var buffs %5;
+
+    #var percent \%%;
+
+    #var protectionFromNeutralOn @contains{$buffs;{%*PN:%*}};
+    #var protectionFromEvilOn @contains{$buffs;{%*PE:%*}};
+    #var protectionFromGoodOn @contains{$buffs;{%*PG:%*}};
+
+    #var protectionFromHeatOn @contains{$buffs;{%*PH:%*}};
+    #var protectionFromFrostOn @contains{$buffs;{%*PF:%*}};
+
+    #var protection - ;
+    #IF {$protectionFromNeutralOn == 1}
+    {
+        #var protection <139>PN<099> ;
+    };
+    #IF {$protectionFromEvilOn == 1}
+    {
+        #var protection $protection<159>PE<099> ;
+    };
+    #IF {$protectionFromGoodOn == 1}
+    {
+        #var protection $protection<169>PG<099> ;
+    };
+    #IF {$protectionFromHeatOn == 1}
+    {
+        #var protection $protection<119>PH<099> ;
+    };
+    #IF {$protectionFromFrostOn == 1}
+    {
+        #var protection $protection<149>PF<099> ;
+    };
+
+    #format {protection}{%p}{$protection};
+
+    #line gag;
+    #echo {G: $deltaGxp S: $smiles($smilePercent$percent) <%4> [ $protection ]};
+    #var hardenedSkinOn @contains{$buffs;{%*HS:%*}};
+    #var blinkOn @contains{$buffs;{%*B/%*}};
+    #var iAmARockOn @contains{$buffs;{%*R:%*}};
+    #var oMuseOn @contains{$buffs;{%*O:%*}};
+    #var amazingGraceOn @contains{$buffs;{%*AG:%*}};
+    #var calledShotOn @contains{$buffs;{%*CS%*}};
+
+    #if {$autocalledshot == 1}
+    {
+        #if {$performing == 1 && $calledShotOn == 0}
+        {
+            #send {!called shot ALWAYS ON};
+        };
+        #ELSEIF {$performing == 0 && $calledShotOn == 1}
+        {
+            #send {called shot OFF};
+        };
+    };
+
+    #IF {$performing == 1 && ($hardenedSkinOn == 0 || $iAmARockOn == 0 || $oMuseOn == 0 || $amazingGraceOn == 0 || $blinkOn == 0)}
+    {
+        #send {!cease};
+    };
+
+    #if {$hardenedSkinOn == 0}
+    {
+        #send {!cast hardened skin};
+        #return;
+    };
+
+    #if {$blinkOn == 0}
+    {
+        #send {!cast blink};
+        #return;
+    };
+
+    #if {$iAmARockOn == 0}
+    {
+        #send {!perform i am a rock};
+        #return;
+    };
+
+    #if {$oMuseOn == 0}
+    {
+        #send {!perform o muse};
+        #return;
+    };
+
+    #if {$amazingGraceOn == 0}
+    {
+        #send {!perform amazing grace};
+        #return;
+    };
+    #if {$autoheat == 1}
+    {
+        #IF {$performing == 1 && $protectionFromHeatOn == 0}
+        {
+            #send {!cease};
+        };
+        #if {$protectionFromHeatOn == 0}
+        {
+            #send {!cast protection from heat};
+            #return;
+        };
+    };
+    #if {$autofrost == 1}
+    {
+        #IF {$performing == 1 && $protectionFromFrostOn == 0}
+        {
+            #send {!cease};
+        };
+        #if {$protectionFromFrostOn == 0}
+        {
+            #send {!cast protection from frost};
+            #return;
+        };
+    };
+    #if {$autocloud == 1}
+    {
+        #IF {$performing == 1 && $cloud == 0}
+        {
+            #send {!cease};
+        };
+        #if {$cloud == 0}
+        {
+            #send {!cast noxious cloud};
+            #return;
+        };
+    };
+    #if {$autospastic == 1}
+    {
+        #IF {$performing == 1 && $spastic == 0}
+        {
+            #send {!cease};
+        };
+        #if {$spastic == 0}
+        {
+            #send {!cast spasmodic shuffle};
+            #return;
+        };
+    };
+    #if {$autoblind == 1}
+    {
+        #IF {$performing == 1 && $blinded == 0}
+        {
+            #send {!cease};
+        };
+        #if {$blinded == 0}
+        {
+            #send {!cast blinding flash};
+            #return;
+        };
+    };
+};
+
+#var boldGreenColor <129>;
+#var negativeColor <119>;
+#var positiveColor <169>;
+#var resetColor <099>;
+#function colorgxpdelta {
+    #if {%1 > 0}
+    {
+        #format {cdelta}{$positiveColor%s$resetColor}{%1};
+        #return $cdelta;
+    };
+    #elseif {%1 <0}
+    {
+        #format {cdelta}{$negativeColor%s$resetColor}{%1};
+        #return $cdelta;
+    };
+    #elseif {%1 == 0}
+    {
+        #format {cdelta}{$negativeColor%s$resetColor}{-};
+        #return $cdelta;
+    };
+    #return %1;
+};
+
+#alias acs {
+  #if {$autocalledshot == 0}
+  {
+    #var autocalledshot 1;
+    #echo {Auto-Called Shot On};
+  }{
+    #var autocalledshot 0;
+    #echo {Auto-Called Shot Off};
+  };
+};
+
+#alias apfh {
+  #if {$autoheat == 0}
+  {
+    #var autoheat 1;
+    #echo {Auto-Protection From Heat On};
+  }{
+    #var autoheat 0;
+    #echo {Auto-Protection From Heat Off};
+  };
+};
+
+#alias apff {
+  #if {$autofrost == 0}
+  {
+    #var autofrost 1;
+    #echo {Auto-Protection From Frost On};
+  }{
+    #var autofrost 0;
+    #echo {Auto-Protection From Frost Off};
+  };
+};
+
+#alias anc {
+  #if {$autocloud == 0}
+  {
+    #var autocloud 1;
+    #echo {Auto-Cloud On};
+  }{
+    #var autocloud 0;
+    #echo {Auto-Cloud Off};
+  };
+}
+
+#alias abf {
+  #if {$autoblind == 0}
+  {
+    #var autoblind 1;
+    #echo {Auto-Blind On};
+  }{
+    #var autoblind 0;
+    #echo {Auto-Blind Off};
+  };
+}
+
+#alias asps {
+  #if {$autospastic == 0}
+  {
+    #var autospastic 1;
+    #echo {Auto-Spastic On};
+  }{
+    #var autospastic 0;
+    #echo {Auto-Spastic Off};
+  };
+}
+
+#action {%*You are no longer blinking}{!cease;!cast blink};
+#action {%*The light flickers out}{!cast light};
+#action {%*You wave your hands around, make swooshing and farting sounds}{#var cloud 1};
+#action {%*Not more than one per room}{#var cloud 1};
+#action {%*You have blinded %*}{#var blinded 1};
+#action {%*With a few quick mystical words you send %*}{#var spastic 1};
+#action {%*That creature is already somewhat spasmodic.}{#var spastic 1};
+
+#action {%*Your hardened skin is beginning to relax}{!cease;!cast hardened skin};
+#action {%*Your skin relaxes to a more normal state.}{!cease;!cast hardened skin};
+
+#action {%*Weaving Magic and Song together, you reinforce the strength of your armor}{!cast cure}
+
+#action {%*The magic of your song, 'O Muse', is fading}{!cease;perform o muse};
+
+#action {%*The magic of your song, 'Amazing Grace', is fading.}{!cease;perform amazing grace};
+
+#action {%*The magic of your song, 'I am a Rock', has faded}{!cease;perform i am a rock};
+
+
+#action {%*Your protection from evil is beginning to fade.}{!cease;!cast protection from evil}
+#action {%*Your protection from good is beginning to fade.}{!cease;!cast protection from good}
+#action {%*Your protection from neutral is beginning to fade.}{!cease;!cast protection from neutral}
+#action {Your protection from heat is beginning to fade.}
+{
+    #if {$autoheat == 1}
+    {
+        !cease;!cast protection from heat;
+    };
+};
+#action {Your protection from frost is beginning to fade.}
+{
+    #if {$autofrost == 1}
+    {
+        !cease;!cast protection from frost;
+    };
+};
+
+#action {%*Your protection from evil has faded.}{!cease;!cast protection from evil}
+#action {%*Your protection from good has faded.}{!cease;!cast protection from good}
+#action {%*Your protection from neutral has faded.}{!cease;!cast protection from neutral}
+#action {%*Your protection from heat has faded.}
+{    
+    #if {$autoheat == 1}
+    {
+        !cease;!cast protection from heat;
+    };
+};
+#action {%*Your protection from frost has faded.}
+{    
+    #if {$autofrost == 1}
+    {
+        !cease;!cast protection from frost;
+    };
+};
+#action {%*Heartening Laugh fades from you}{cease;!heartening laugh}
+
+#action {Beldrew dealt the killing blow to %*}{
+    #var blinded 0;
+    #var cloud 0;
+    #var spastic 0;
+	#send {!get coins from corpse};
+	#send {!wrap corpse};
+	#send {!cease};
+    #send {!o};
+    #showme {There is no reason to 'inch' here.};
+};
+
+
+#alias {next %*} {
+	#action {There is no reason to 'inch' here.$}
+	{
+		#math nextDelay {2 d 3};
+		#echo {Next delay: [$nextDelay] Action [%1]};
+		#delay {$nextDelay}{
+			%1;
+		};
+	};
+};
+next #bell;
+
+
+
+#action {You sift through the dirt, and find a torch}{light torch};
+
+#GAG {^ 1%*A Jug of Riot Punch.};
+
+#ALIAS {pw}{portal;#12 n;leave;#12 n;s;#10 w;}
+
+#alias {pr} {portal;#12 n;leave;#8 n;#4 e;#6 n;#9 w}
+
+#alias {pi}{pr;#8 e;#10 n}
+
+#alias {pe}{portal;#15 e;leave;#4 e;ne;ne;n;ne;ne;#3 e};
+
+#alias {pd}{portal;#12 w;leave;#8 w;#3 s};
+
+#gag {A strip of lights on both sides of the Taser light up.};
+#gag {The weapon begins to hum.};
+#gag {FWHAM!!!};
+#gag {A huge burst of light and energy splits the air and slams into};
+
+#gag {The Arc Welder releases a bolt of electricity! Electrifying};
+#gag {Bolts of electicity fly forth from the Arc Welder. Electrifying};
+#gag {PFZZZT!};
+#gag {You activate the Arc Welder and electrify %* with bolts of electricity!};
+#gag {Bolts of electricity flow out of the Arc Welder and course over};
+#gag {The Arc Welder spits electricity at};
+#gag {PFZZT! You shock };
+#gag {The Arch Welder is getting low on power};
+#gag {You try to activate the Arch Welder, but nothing happens.};
+#gag {It must be out of power.};
+
+#gag {You feel the Daemon Blade come alive as you cut deep into };
+#gag {The Daemon Blade is licked with black flame as you strike};
+#gag {The Daemon Blade gouges deeply into };
+
+#action {The Daemon Blade screams at you, 'I need SOULS!!'}{steal};
+
+#class {beldrew} {close}

@@ -1,4 +1,4 @@
-#nop {}
+#sub {The ice behemoth opens its toothy maw and lets loose a blizzard of ice!}{<099>The ice behemoth opens its toothy maw and lets loose a blizzard of ice!<099>};
 
 #function {contains}
 { 

@@ -56,6 +56,13 @@
 
 #echo {};
 
+#echo {11) Beldrew(bard)(gallant)};
+#var {my[alts][11][name]}{beldrew3s};
+#var {my[alts][11][guild]}{bard};
+#var {my[alts][11][subguild]}{gallant};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};
