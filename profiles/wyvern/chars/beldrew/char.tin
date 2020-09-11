@@ -4,6 +4,9 @@
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
+#read /Users/talir/Dropbox/3k/pstats.txt;
+#read /home/beldrew/Dropbox/3k/pstats.txt;
+
 #var guild bard;
 
 #alias {kk}{#5 hi;bs mutant};
@@ -31,8 +34,6 @@
 };
 
 !party;
-
-srl pstats;
 
 !first impression;
 !hl;
@@ -128,23 +129,35 @@ srl pstats;
 
     #var performing @contains{%4;{%*P:%*}};
 
-	#if {$my[sp][current] < $my[sp][max] && $performing == 0}
+    #var performingMinstrelBoy @contains{$mip[gline][2];{%*Minstrel Boy:%*}};
+
+	#if {$my[sp][current] < $my[sp][max] && ($performing == 0 || $performingMinstrelBoy == 1)}
 	{
+		#var needsSmile 0;
 		#if {$smiles >= 4 && $smilePercent >= 25 }
 		{
-			#send {!perform smile};
+			#var needsSmile 1;
 		};
 		#elseif {$smiles >= 3 && $smilePercent >= 50}
 		{
-			#send {!perform smile};
+			#var needsSmile 1;
 		};
 		#elseif {$smiles >= 2 && $smilePercent >= 75}
 		{
-			#send {!perform smile};
+			#var needsSmile 1;
 		};
 		#elseif {$smiles >= 1 && $smilePercent >= 99}
 		{
+			#var needsSmile 1;
+		};
+		#if {$needsSmile == 1}
+		{
+			#if {$performingMinstrelBoy == 1}
+			{
+				#send {!cease};
+			};
 			#send {!perform smile};
+			#return;
 		};
 	};
 
@@ -193,11 +206,11 @@ srl pstats;
 
     #if {$autocalledshot == 1}
     {
-        #if {$performing == 1 && $calledShotOn == 0}
+        #if {$performing == 1 && $performingMinstrelBoy == 0 && $calledShotOn == 0}
         {
             #send {!called shot ALWAYS ON};
         };
-        #ELSEIF {$performing == 0 && $calledShotOn == 1}
+        #ELSEIF {($performing == 0 || $performingMinstrelBoy == 1) && $calledShotOn == 1}
         {
             #send {called shot OFF};
         };
@@ -340,6 +353,14 @@ srl pstats;
 	};
 	update_status;
     #line gag;
+};
+
+#action {You finish your performance with a bow.}
+{
+	#IF {$calledShotOn == 1}
+	{
+        #send {called shot OFF};
+	};
 };
 
 #var boldGreenColor <129>;
