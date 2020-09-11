@@ -125,23 +125,23 @@ srl pstats;
 
     #var performing @contains{%4;{%*P:%*}};
 
-	#if{$smiles >= 4 && $smilePercent >= 25 && $performing == 0}
+	#if {$smiles >= 4 && $smilePercent >= 25 && $performing == 0}
 	{
 		#send {!perform smile};
 	};
-	#elseif{$smiles >= 3 && $smilePercent >= 50 && $performing == 0}
+	#elseif {$smiles >= 3 && $smilePercent >= 50 && $performing == 0}
 	{
 		#send {!perform smile};
 	};
-	#elseif{$smiles >= 2 && $smilePercent >= 75 && $performing == 0}
+	#elseif {$smiles >= 2 && $smilePercent >= 75 && $performing == 0}
 	{
 		#send {!perform smile};
 	};
-	#elseif{$smiles >= 1 && $smilePercent >= 99 && $performing == 0}
+	#elseif {$smiles >= 1 && $smilePercent >= 99 && $performing == 0}
 	{
 		#send {!perform smile};
 	};
-	
+
     #var buffs %5;
 
     #var percent \%%;
