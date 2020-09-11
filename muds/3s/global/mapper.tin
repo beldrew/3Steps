@@ -90,16 +90,6 @@
 	#var exits %3;
 	#if {"$mapping" == "on"} {
 		#replace exits {,} {;};
-		#if {"$area" == "The Sea of Chaos"}
-		{
-			#alias kk kill mutant;
-			#alias oextra {take all};
-		};
-		#elseif {"%2" == "Sewer Portal" && "$area" == "Chaotic Sewers"}
-		{
-			#alias kk kill $kstr;
-			#alias oextra #nop {};
-		};
 		#foreach {$exits} {eachexit} {
 			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
 				#echo {Excluding a: $eachexit};

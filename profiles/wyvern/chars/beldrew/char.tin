@@ -6,8 +6,13 @@
 
 #var guild bard;
 
+#alias {kk}{#5 hi;bs mutant};
 
-#sub {This armor has special defense against melee attacks.}{This armor has <129>special defense<099> against <119>melee<099> attacks.};
+#gag {The sword pulses in your grasp};
+
+#sub {This armor has%*special defense against melee attacks.}{This armor has<169>%1<129>special defense<099> against <119>melee<099> attacks.};
+
+#gag {Um. Like, you are already...};
 
 #alias {^challenge all$}
 {
@@ -104,21 +109,15 @@ srl pstats;
 #var autospastic 0;
 #var autoheat 1;
 #var autofrost 1;
+#var autogood 1;
+#var autoneutral 1;
+#var autoevil 1;
 #var autocalledshot 0;
 #action {G2S:%d S:%d(%d%) <%*>  [[ %* ]]}{
     #variable {deltaGxp} @delta{GXP;%1};
     #variable {deltaGxp} @colorgxpdelta{$deltaGxp};
     #var smiles %2;
     #var smilePercent %3;
-
-    #NOP {Doesn't seem to work};
-    #NOP {
-        #IF {"%4" != ""}{
-            #var songCounter %4;
-        }{
-            #var songCounter -;
-        };
-    };
 
     #var performing @contains{%4;{%*P:%*}};
 
@@ -157,7 +156,6 @@ srl pstats;
 
     #format {protection}{%p}{$protection};
 
-    #line gag;
     #echo {G: $deltaGxp S: $smiles($smilePercent$percent) <%4> [ $protection ]};
     #var hardenedSkinOn @contains{$buffs;{%*HS:%*}};
     #var blinkOn @contains{$buffs;{%*B/%*}};
@@ -212,6 +210,43 @@ srl pstats;
         #send {!perform amazing grace};
         #return;
     };
+	#if {$autoevil == 1}
+    {
+        #IF {$performing == 1 && $protectionFromEvilOn == 0}
+        {
+            #send {!cease};
+        };
+        #if {$protectionFromEvilOn == 0}
+        {
+            #send {!cast protection from evil};
+            #return;
+        };
+    };
+	#if {$autoneutral == 1}
+    {
+        #IF {$performing == 1 && $protectionFromNeutralOn == 0}
+        {
+            #send {!cease};
+        };
+        #if {$protectionFromNeutralOn == 0}
+        {
+            #send {!cast protection from neutral};
+            #return;
+        };
+    };
+	#if {$autogood == 1}
+    {
+        #IF {$performing == 1 && $protectionFromGoodOn == 0}
+        {
+            #send {!cease};
+        };
+        #if {$protectionFromGoodOn == 0}
+        {
+            #send {!cast protection from good};
+            #return;
+        };
+    };
+
     #if {$autoheat == 1}
     {
         #IF {$performing == 1 && $protectionFromHeatOn == 0}
@@ -272,6 +307,8 @@ srl pstats;
             #return;
         };
     };
+	update_status;
+    #line gag;
 };
 
 #var boldGreenColor <129>;
@@ -307,6 +344,40 @@ srl pstats;
     #echo {Auto-Called Shot Off};
   };
 };
+
+#alias apfn {
+  #if {$autoneutral == 0}
+  {
+    #var autoneutral 1;
+    #echo {Auto-Protection From Neutral On};
+  }{
+    #var autoneutral 0;
+    #echo {Auto-Protection From Neutral Off};
+  };
+};
+
+#alias apfg {
+  #if {$autogood == 0}
+  {
+    #var autogood 1;
+    #echo {Auto-Protection From Good On};
+  }{
+    #var autogood 0;
+    #echo {Auto-Protection From Good Off};
+  };
+};
+
+#alias apfe {
+  #if {$autoevil == 0}
+  {
+    #var autoevil 1;
+    #echo {Auto-Protection From Evil On};
+  }{
+    #var autoevil 0;
+    #echo {Auto-Protection From Evil Off};
+  };
+};
+
 
 #alias apfh {
   #if {$autoheat == 0}
@@ -390,47 +461,91 @@ srl pstats;
 {
     #if {$autoheat == 1}
     {
-        !cease;!cast protection from heat;
+        !cease;
+		!cast protection from heat;
     };
 };
 #action {Your protection from frost is beginning to fade.}
 {
     #if {$autofrost == 1}
     {
-        !cease;!cast protection from frost;
+        !cease;
+		!cast protection from frost;
     };
 };
 
-#action {%*Your protection from evil has faded.}{!cease;!cast protection from evil}
-#action {%*Your protection from good has faded.}{!cease;!cast protection from good}
-#action {%*Your protection from neutral has faded.}{!cease;!cast protection from neutral}
+#action {%*Your protection from evil has faded.}
+{
+	#IF {$autoevil == 1}
+	{
+		!cease;
+		!cast protection from evil;
+	};
+};
+#action {%*Your protection from good has faded.}
+{
+	#IF {$autogood == 1}
+	{
+		!cease;
+		!cast protection from good;
+	};
+};
+#action {%*Your protection from neutral has faded.}
+{
+	#if {$autoneutral}
+	{
+		!cease;
+		!cast protection from neutral;
+	};
+};
+
 #action {%*Your protection from heat has faded.}
 {    
     #if {$autoheat == 1}
     {
-        !cease;!cast protection from heat;
+        !cease;
+		!cast protection from heat;
     };
 };
 #action {%*Your protection from frost has faded.}
 {    
     #if {$autofrost == 1}
     {
-        !cease;!cast protection from frost;
+        !cease;
+		!cast protection from frost;
     };
 };
 #action {%*Heartening Laugh fades from you}{cease;!heartening laugh}
 
-#action {Beldrew dealt the killing blow to %*}{
+#alias oextra {get all;put all in disc};
+
+#var bard[autoCorpse] 1;
+#alias {^aa$}{
+	#IF {$bard[autoCorpse] == 1}
+	{
+		#var bard[autoCorpse] 0;
+		#echo {Auto-dirge off};
+	}{
+		#var bard[autoCorpse] 1;
+		#echo {Auto-dirge on};
+	}
+};
+
+#action {%* dealt the killing blow to %*}{
     #var blinded 0;
     #var cloud 0;
     #var spastic 0;
-	#send {!get coins from corpse};
-	#send {!wrap corpse};
-	#send {!cease};
-    #send {!o};
-    #showme {There is no reason to 'inch' here.};
-};
 
+	#if {$bard[autoCorpse] == 1}
+	{
+		#send {!wrap corpse quiet};
+		#send {!cease};
+		#send {!perform dirge};
+	};
+	#send {!divvy gold};
+	oextra;
+	#showme {There is no reason to 'inch' here.};
+};
 
 #alias {next %*} {
 	#action {There is no reason to 'inch' here.$}
