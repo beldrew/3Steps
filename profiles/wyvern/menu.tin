@@ -63,6 +63,12 @@
 
 #echo {};
 
+#echo {12) Calisp(warder)};
+#var {my[alts][12][name]}{calisp3s};
+#var {my[alts][12][guild]}{warder};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};

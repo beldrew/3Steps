@@ -1,0 +1,19 @@
+#class {calisp} {kill}
+#class {calisp} {open}
+
+#var guild warder
+
+#ticker {gxp}{#send {}}{240};
+
+
+#read /Users/talir/Dropbox/3k/warder3s.txt;
+#read /home/beldrew/Dropbox/3k/warders3s.txt;
+
+#read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
+#read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
+
+bl sedai;
+
+#alias oextra {get all;ll};
+
+#class {calisp} {close}
