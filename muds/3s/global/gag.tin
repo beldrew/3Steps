@@ -3,6 +3,8 @@
 /* Blank Line */
 #gag {^$}
 
+#gag {The sword pulses in your grasp};
+
 /* Gag Ansi Setup */
 #gag {^ANSI variables %1 removed.};
 #gag {^Variable %1 set to: %2};
