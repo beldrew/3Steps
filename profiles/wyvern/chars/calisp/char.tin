@@ -5,6 +5,8 @@
 
 #ticker {gxp}{#send {}}{240};
 
+#read /Users/talir/Dropbox/3k/substitutes.txt;
+#read /home/beldrew/Dropbox/3k/substitutes.txt;
 
 #read /Users/talir/Dropbox/3k/warder3s.txt;
 #read /home/beldrew/Dropbox/3k/warder3s.txt;
@@ -14,6 +16,6 @@
 
 bl sedai;
 
-#alias oextra {get all;ll};
+#alias oextra {ll;get all};
 
 #class {calisp} {close}
