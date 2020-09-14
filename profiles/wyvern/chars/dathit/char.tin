@@ -12,6 +12,9 @@
 multigag {You take a massive swing with the Vorpal Blade%*}{%*the creature's limbs};
 multigag {You swing with all your might at the%*}{%*screams as you decapitate it};
 
+#alias {rf %d}{#%1 {unwield lightsaber;reforge lightsaber max energy critical;sheath;draw lightsaber};};
+
+
 #gag {|%sReflex:%snothing%s0%s|};
 #gag {|%sImpulse:%snothing%s0%s|};
 #gag {^%sCrystals installed:%s$};
