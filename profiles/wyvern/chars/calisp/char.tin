@@ -14,6 +14,9 @@
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
+#read /Users/talir/Dropbox/3k/reforger.txt;
+#read /home/beldrew/Dropbox/3k/reforger.txt;
+
 bl sedai;
 
 #alias oextra {ll;get all};

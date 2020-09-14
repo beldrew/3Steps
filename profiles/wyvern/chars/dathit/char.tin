@@ -3,8 +3,14 @@
 
 #var guild jedi;
 
-#read /Users/talir/Dropbox/3k/hooligan.txt;
-#read /home/beldrew/Dropbox/3k/hooligan.txt;
+#read /Users/talir/Dropbox/3k/reforger.txt;
+#read /home/beldrew/Dropbox/3k/reforger.txt;
+
+#read /Users/talir/Dropbox/3k/multigag.txt;
+#read /home/beldrew/Dropbox/3k/multigag.txt;
+
+multigag {You take a massive swing with the Vorpal Blade%*}{%*the creature's limbs};
+multigag {You swing with all your might at the%*}{%*screams as you decapitate it};
 
 #gag {|%sReflex:%snothing%s0%s|};
 #gag {|%sImpulse:%snothing%s0%s|};
