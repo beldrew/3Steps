@@ -2,6 +2,7 @@
 #class {sithit} {open};
 
 #var guild jedi
+#var jedi[name] Sithit;
 
 #ticker {gxp}{#send {}}{240};
 
@@ -13,5 +14,7 @@
 
 #read /Users/talir/Dropbox/3k/reforger.txt;
 #read /home/beldrew/Dropbox/3k/reforger.txt;
+
+#alias oextra {ta};
 
 #class {sithit} {close};
