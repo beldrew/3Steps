@@ -1,5 +1,5 @@
-#class {divit} {kill}
-#class {divit} {open}
+#class {divit} {kill};
+#class {divit} {open};
 
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
@@ -9,10 +9,10 @@
 
 #var guild gentech;
 
-#action {HP:%d/%d %*}
-{
-	update_status;
-};
+#NOP #action {HP:%d/%d %*}
+#NOP {
+#NOP 	update_status;
+#NOP };
 
 #alias oextra {ta;};
 #var gentech[corpse] reclaim;
@@ -37,4 +37,4 @@
 };
 next #bell;
 
-#class {divit} {close}
+#class {divit} {close};
