@@ -341,10 +341,12 @@
 	}; 
 	#ELSEIF {%1 == 2}
 	{
-		#REPLACE {mip[gline][2]}{Controlling }{C};
-		#REPLACE {mip[gline][2]}{Dodging}{Dodge};
+		#REPLACE {mip[gline][2]}{Controlling Pain}{CP};
+		#REPLACE {mip[gline][2]}{Control Pain}{CP};
+		#REPLACE {mip[gline][2]}{Dodging}{D};
 		#REPLACE {mip[gline][2]}{Dissipating}{Diss};
-		#REPLACE {mip[gline][2]}{Hibernation }{H};
+		#REPLACE {mip[gline][2]}{Hibernation Trance}{HT};
+		#REPLACE {mip[gline][2]}{Accelerated Healing}{AH};
 	}; 
 	#ELSE 
 	{
