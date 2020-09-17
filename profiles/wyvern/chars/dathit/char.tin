@@ -4,8 +4,6 @@
 #var guild jedi
 #var jedi[name] Dathit;
 
-#ticker {gxp}{#send {}}{240};
-
 #read /Users/talir/Dropbox/3k/jedi3s.txt;
 #read /home/beldrew/Dropbox/3k/jedi3s.txt;
 
