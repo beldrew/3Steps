@@ -110,10 +110,14 @@
         #echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};
         #delay {2}
 		{
-			#send {retreat from the sea};
+			#send {flee};
 			#delay {2}
 			{
-				#end;
+				#send {retreat from the sea};
+				#delay {2}
+				{
+					#end;
+				};
 			};
 		};
 	};
