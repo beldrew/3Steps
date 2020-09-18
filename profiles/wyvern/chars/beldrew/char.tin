@@ -9,4 +9,6 @@
 
 #alias oextra {get all;put all in disc};
 
+#unalias cc;
+
 #class {beldrew} {close}

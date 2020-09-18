@@ -44,7 +44,7 @@
 	#if	{$idle_sec < 10}{#var idle_sec 0$idle_sec};
 	#format {idle_cap}	{%+4s}	{<268>[<128>$idle_hr<268>:<128>$idle_min<268>:<128>$idle_sec<268>]<088>};
 
-		#if {"$mapping" == "on"} {
+	#if {"$mapping" == "on"} {
 		#format {mapstatus} {<068>[MAPPING]<088>};
 	} {
 		#var mapstatus {};
