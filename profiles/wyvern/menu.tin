@@ -69,6 +69,13 @@
 
 #echo {};
 
+#echo {13) Fremit(fremen)(fedaykin)};
+#var {my[alts][13][name]}{fremit3s};
+#var {my[alts][13][guild]}{fremen};
+#var {my[alts][13][subguild]}{fedaykin};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};

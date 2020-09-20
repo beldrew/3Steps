@@ -29,7 +29,7 @@
 #alias {pm}{redraw caption off;redraw map off;redraw chat off;redraw gline off;redraw hpbar off};
 
 #NOP normal mode;
-#alias {nm}{redraw caption on;redraw map on;redraw chat on;redraw gline on;redraw hpbar on};
+#alias {nm}{redraw caption on;redraw map on;redraw chat on;redraw gline on};
 
 #alias srlc #read ${myprofilepath}/chars/$ses_name/char.tin;
 

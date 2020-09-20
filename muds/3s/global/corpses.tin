@@ -90,12 +90,4 @@
 	#class {corpse_count} {close}
 }
 
-/* Aliases */
-#alias {cc} {
-	kac;
-	!keep coffin;
-	!keep freezer;
-	!exa cl;
-	!exa cooler
-}
 #class {corpses} {close}

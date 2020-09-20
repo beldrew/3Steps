@@ -1,0 +1,18 @@
+#class {fremit} {kill};
+#class {fremit} {open};
+
+#var guild fremen;
+
+#read /Users/talir/Dropbox/3k/reforger.txt;
+#read /home/beldrew/Dropbox/3k/reforger.txt;
+
+#read /Users/talir/Dropbox/3k/fremen3s.txt;
+#read /home/beldrew/Dropbox/3k/fremen3s.txt;
+
+#read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
+#read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
+
+#alias oextra {ta};
+#alias kk {#delay {2}{hide;ambush mutant}};
+
+#class {fremit} {close};
