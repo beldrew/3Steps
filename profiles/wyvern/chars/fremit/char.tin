@@ -13,6 +13,6 @@
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
 #alias oextra {ta};
-#alias kk {#delay {2}{hide;poison knife;ambush mutant}};
+#alias kk {#delay {2}{hide;poison knife;ambush mutant;kill mutant}};
 
 #class {fremit} {close};
