@@ -119,7 +119,7 @@
 #gag {shortsword %1 like %2 %3 the %4}
 #gag {%1 the shortsword like %2 %3 the %4}
 #gag {^The sword bites like %1 into %2}
-#gag {^You hit %1.};
+
 #gag {The bracers flare brightly and your form wavers slightly!}
 #gag {The Sword strikes with an unholy power!}
 #gag {The scorpion stabs you with its stinger!}
