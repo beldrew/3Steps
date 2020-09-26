@@ -12,7 +12,7 @@
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
-#alias oextra {ta};
+#alias oextra {#nop {};};
 #alias kk {#delay {2}{hide;poison knife;ambush mutant;kill mutant}};
 
 #class {fremit} {close};
