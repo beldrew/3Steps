@@ -541,6 +541,18 @@
 	show_chat
 }
 
+#var mip[tellBeep] 1;
+#alias {^tb$}{
+	#IF {$mip[tellBeep] == 1}
+	{
+		#var mip[tellBeep] 0;
+		#echo {TellBeep off};
+	}{
+		#var mip[tellBeep] 1;
+		#echo {TellBeep on};
+	}
+}
+
 #ALIAS {.mipProcessBAB} {
 	#IF {$mip[debug] == 1}
 	{
@@ -575,7 +587,10 @@
 					#line log {${logpath}/3s.chat} {$timestamp\};
 					#line log {${logpath}/3s.chat} {<178>&3<088>: &4};
 				};
-				#bell;
+				#IF {$mip[tellBeep] == 1}
+				{
+					#bell;
+				};
 				update_chat ${timestamp}<178>&3<088>: &4;
 			}
 		}
