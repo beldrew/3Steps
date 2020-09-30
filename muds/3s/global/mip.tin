@@ -238,7 +238,12 @@
 			#CASE {"sii"}		{.mipProcessGlineSii {%1}}
 			#CASE {"angel"}		{.mipProcessGlineAngel {%1}}
 			#CASE {"mages"}		{.mipProcessGlineMages {%1}}
-		}
+		};
+		#REGEXP {$mip[gline][%1]}{%* G2S: %d}
+		{
+			#format {mip[g2s]}{%g}{&2};
+			#replace {mip[gline][%1]}{&2}{$mip[g2s]};
+		};
 	}
 }
 

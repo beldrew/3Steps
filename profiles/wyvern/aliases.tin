@@ -23,7 +23,7 @@
 #alias bsea {retreat from the sea;out;n;n;w;w;w;s;w;w;n;n;w;w;w;vortex;home};
 
 #alias gspiders {fantasy;portal square;#12 w;leave;#4 w;#6 n;#6 w;s;d};
-#alias bspiders {u;n;#6 e;#6 s;#4 e;enter;#12 e;portal;home};
+#alias bspiders {touch one;u;n;#6 e;#6 s;#4 e;enter;#12 e;portal;home};
 
 #NOP phone mode;
 #alias {pm}{redraw caption off;redraw map off;redraw chat off;redraw gline off;redraw hpbar off};
