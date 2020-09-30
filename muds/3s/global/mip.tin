@@ -235,14 +235,18 @@
 			#CASE {"jedi"}		{.mipProcessGlineJedi {%1}};
 			#CASE {"juggernaut"}	{.mipProcessGlineJuggernaut {%1}};
 			#CASE {"necromancer"}	{.mipProcessGlineNecromancer {%1}};
-			#CASE {"sii"}		{.mipProcessGlineSii {%1}}
-			#CASE {"angel"}		{.mipProcessGlineAngel {%1}}
-			#CASE {"mages"}		{.mipProcessGlineMages {%1}}
-		};
-		#REGEXP {$mip[gline][%1]}{%* G2S: %d}
-		{
-			#format {mip[g2s]}{%g}{&2};
-			#replace {mip[gline][%1]}{&2}{$mip[g2s]};
+			#CASE {"sii"}		{.mipProcessGlineSii {%1}};
+			#CASE {"angel"}		{.mipProcessGlineAngel {%1}};
+			#CASE {"mages"}		{.mipProcessGlineMages {%1}};
+			#CASE {"fremen"}
+			{
+				#NOP {fremen g2s};
+				#REGEXP {$mip[gline][%1]}{%* G2S: %d}
+				{
+					#format {mip[g2s]}{%g}{&2};
+					#replace {mip[gline][%1]}{&2}{$mip[g2s]};
+				};
+			};
 		};
 	}
 }
