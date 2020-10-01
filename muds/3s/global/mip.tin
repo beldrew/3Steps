@@ -91,8 +91,8 @@
 	};
 }
 
-#var clockon 0
 #var IdleLimit 3600
+#var belled 0;
 #TICKER {idle} {
 	#math {idle} {$idle + 1};
 	#if {$idle > 3000} {
@@ -104,24 +104,14 @@
 	}; #elseif {$idle < 600} {
 		#screen clear square 21 1 -8 1
 	};
-	#if {$idle > $IdleLimit} {
-        #bell;
-        time;
-        #echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};
-        #delay {2}
-		{
-			#send {flee};
-			#delay {2}
-			{
-				#send {retreat from the sea};
-				#delay {2}
-				{
-					#end;
-				};
-			};
-		};
+	#if {$idle > $IdleLimit}
+	{
+		#action {You focus on the cube and record a chaotic return point}{#delay {2} {#end}};
+		#alias q {#send {retreat from the sea};#echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};#delay {2} {time;#bell}};
+		next q;
+		q;
 	};
-	update_caption
+	update_caption;
 } {1}
 
 #EVENT {RECEIVED INPUT} {
