@@ -106,10 +106,8 @@
 	};
 	#if {$idle > $IdleLimit}
 	{
-		#action {You focus on the cube and record a chaotic return point}{#delay {2} {#end}};
-		#alias q {#send {retreat from the sea};#echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};#delay {2} {time;#bell}};
-		next q;
-		q;
+		#send {retreat from the sea};
+		#delay {2} {#echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};time;#bell;#delay {2}{#end}}};
 	};
 	update_caption;
 } {1}
