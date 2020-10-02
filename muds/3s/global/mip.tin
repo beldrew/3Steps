@@ -107,7 +107,7 @@
 	#if {$idle > $IdleLimit}
 	{
 		#send {retreat from the sea};
-		#delay {2} {#echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};time;#bell;#delay {2}{#end}}};
+		#delay {2} {#echo {<570>* * * IDLE TIMEOUT ELAPSED * * *<099>};time;#bell;#delay {2}{#end}};
 	};
 	update_caption;
 } {1}
