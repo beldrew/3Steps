@@ -45,7 +45,7 @@
 	#format {idle_cap}	{%+4s}	{<268>[<128>$idle_hr<268>:<128>$idle_min<268>:<128>$idle_sec<268>]<088>};
 
 	#if {"$draw[caption]" == "on"} {
-		#SHOWME {<088><128>$world_cap <068>Up:<168>$uptime_cap <038>Boot:<138>$reboot_cap <228>Idle:$idle_cap} {19}
+		#SHOWME {<088><128>$world_cap <068>Up: <168>$uptime_cap <038>Boot: <138>$reboot_cap <228>Idle $idle_cap} {19}
 	};
 }
 
