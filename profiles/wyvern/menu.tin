@@ -76,6 +76,12 @@
 
 #echo {};
 
+#echo {14) Sal(priest)};
+#var {my[alts][14][name]}{sal3s};
+#var {my[alts][14][guild]}{priest};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};

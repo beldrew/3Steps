@@ -1,0 +1,18 @@
+#class {sal} {kill};
+#class {sal} {open};
+
+#var guild priest;
+
+#read /Users/talir/Dropbox/3k/reforger.txt;
+#read /home/beldrew/Dropbox/3k/reforger.txt;
+
+#read /Users/talir/Dropbox/3k/priest3s.txt;
+#read /home/beldrew/Dropbox/3k/priest3s.txt;
+
+#read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
+#read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
+
+#alias oextra {#nop {};};
+#alias kk {kill mutant;pm};
+
+#class {sal} {close};
