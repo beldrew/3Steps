@@ -14,4 +14,8 @@
 
 #alias oextra {#nop {};};
 
+#action {There is no mutant here.}{ki};
+
+bl cloud elemental;
+
 #class {sal} {close};
