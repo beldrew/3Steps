@@ -16,6 +16,6 @@
 
 bl sedai;
 
-#alias oextra {ll;get all};
+#alias oextra {ll;get angreal};
 
 #class {calisp} {close};
