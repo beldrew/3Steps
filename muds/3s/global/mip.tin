@@ -572,6 +572,10 @@
 	#REGEX {%0} { arrives at the Academy.} {#var mipgag 1};
 	#REGEX {%0} { leaves the Academy.} {#var mipgag 1};
 
+	#NOP Warders;
+	#REGEX {%0} { has slain a Darkfriend!} {#var mipgag 1};
+	#REGEX {%0} { has identified %* as a Darkfriend!} {#var mipgag 1};
+
 	#IF {$mipgag == 0} {.mipProcessCAA %0}
 }
 #ALIAS {.mipProcessCAA} {
