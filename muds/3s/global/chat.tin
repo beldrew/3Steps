@@ -1,36 +1,38 @@
 #class {common_chatlog} {kill}
 #class {common_chatlog} {open}
 
-#alias {-cl} {
-        #format {datestamp} {%t} {%Y-%m-%d.log};
+#alias {-cl} 
+{
+    #format {datestamp} {%t} {%Y-%m-%d.log};
 	#format {timestamp} {%t} {[<268>%H<088>:<268>%M<088>] };
 	#regex {"$world"} {3s} {
 		#line log ${logpath}/3s.chat {$timestamp\}
 	} {
 		#line log ${logpath}/3k.chat {$timestamp\}
 	};
-        -xchatlog
-        }
+    -xchatlog
+}
 
 #alias {-xchatlog}
-        {
+{
         #class {xchatlog} {open};
         #act {^{\S}} {#class {xchatlog} {kill}} {99};
         #act {{^(\s)*$}} {#class {xchatlog} {kill}} {99};
         #act {^{\s{1,40}\S}} {-cl};
         #class {xchatlog} {close}
-        }
+}
 
 #NOP #act {{^\[.*\] [A-z]+:}} {-cl}
 /* TELLS LINKTELLS AUCTION HM SHOUTS GSHOUTS CLAN PROFESSIONS CRAFTING*/
 #act {{^((A ghostly form of )?[A-z0-9@]+ (<HM-[A-z]+(\s[A-z]+)?>:|-=\(OMP\)=-|LTs? \([\[\]0-9A-z\[\], ]+\)|says?|whispers?|tells?( you)? \(?[A-z0-9,@]+\)?:|g?shouts:|flaps :)|\[(Clan|PARTY|Auction)\] [A-z\(\) ]+:?)}} {-cl}
 
-#act {{[A-z0-9@]+ tells you:}} {
+#act {{[A-z0-9@]+ tells you:}} 
+{
 	-cl;
 } {4};
+
 #act {%1@3k tells you: %2} {
 	#format {timestamp} {%t} {[<268>%H<088>:<268>%M<088>] };
-        #format {dbtimestamp} {%t} {[%Y:%m:%d %H:%M:%S]};
 	#if {$my[config][db][chat] == 1}{
 		#var {dbmess}{%0};
 		db_submit_chat $dbmess;
@@ -40,14 +42,6 @@
 	};
 	update_chat ${timestamp}<178>%0<088>;
 }{1};
-
-/*	#var IdleTimeout 600
-	#undelay {deadmanSwitch};
-        #delay {deadmanSwitch} {
-		#ignore all on;
-		#ECHO {DEADMAN Trigered!}
-	} {$IdleTimeout}
-*/
 
 #act {{^[\w]+ (<Craft>|\{Professions\}):}} {-cl}
 #act {{^[\w]+ <C-Trade>:}} {-cl}
@@ -73,20 +67,19 @@
 
 /* Jugger */
 
-/* #act {^{\[-Jugger(\([A-z]+\))? [A-z]+:}} {-cl}   */
 #act {{^\[-?(Jugger|Wolf|Bear|Falcon|JuggNewbie|Bloodname|Loremaster|Council|ADMIN)\(?\w*\)?-?\] (\w+: )?}} {-cl} 
 
 
 /* Necro */
 #act {^{[A-z]+ \[[A-z0-9-]+\]:}} {-cl}
-#act {Quoth tells you:} {#nop}{1}
-#act {F tells you:} {#nop}{1}
-#act {A tiny translucent bombardier beetle tells you:} {#nop}{1}
-#act {Talia tells you:} {#nop}{1}
+#act {Quoth tells you:} {#nop {};}{1}
+#act {F tells you:} {#nop {};}{1}
+#act {A tiny translucent bombardier beetle tells you:} {#nop {};}{1}
+#act {Talia tells you:} {#nop {};}{1}
 
 /* PROFESSIONS */
 
-#alias {.stop} {#nop}
+#alias {.stop} {#nop {};}
 
 /* EMOTES */
 #act {From afar,} {-cl}
