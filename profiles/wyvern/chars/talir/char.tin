@@ -1,66 +1,14 @@
-#class {talir} {kill}
-#class {talir} {open}
+#class {talir} {kill};
+#class {talir} {open};
+
+#var guild angel
+
+#ticker {gxp}{#send {}}{240};
+
+#read /Users/talir/Dropbox/3k/angel3s.txt;
+#read /home/beldrew/Dropbox/3k/angel3s.txt;
 
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
-#var guild angel;
-
-
-#action {%*REBEL AGAINST YOUR CONTROL%*}{#send {!por}};
-
-#gag {You have no need of spiritual aid.};
-
-#action {H: %d/%d[]%*}
-{
-	update_status;
-};
-
-#alias oextra {#send {get all};};
-
-#sub {Your alignment is: mean.}{Your alignment is: <039>mean<099>.};
-#sub {Your alignment is: neutral.}{Your alignment is: <139>neutral<099>.};
-#sub {Your alignment is: immoral.}{Your alignment is: <059>immoral<099>.};
-#sub {Your alignment is: malicious.}{Your alignment is: <159>malicious<099>.};
-#sub {Your alignment is: corrupt.}{Your alignment is: <019>corrupt<099>.};
-#sub {Your alignment is: sinister.}{Your alignment is: <119>sinister<099>.};
-#sub {Your alignment is: satanic.}{Your alignment is: <119>satanic<099>.};
-
-#var angel[corpse] free;
-
-#var angel[autoCorpse] 1;
-#alias {^aa$}{
-	#IF {$angel[autoCorpse] == 1}
-	{
-		#var angel[autoCorpse] 0;
-		#echo {Auto-free off};
-	}{
-		#var angel[autoCorpse] 1;
-		#echo {Auto-free on};
-	}
-};
-
-#action {%* dealt the killing blow to}{
-	#if {$angel[autoCorpse] == 1}
-	{
-		#send {!wrap corpse quiet};
-		#send {!free};
-	};
-	#send {!divvy gold};
-	oextra;
-	#showme {There is no reason to 'inch' here.};
-};
-
-#alias {next %*} {
-	#action {There is no reason to 'inch' here.$}
-	{
-		#math angel[nextDelay] {1 d 6};
-		#echo {Next delay: [$angel[nextDelay]] Action [%1]};
-		#delay {$angel[nextDelay]}{
-			%1;
-		};
-	};
-};
-next #bell;
-
-#class {talir} {close}
+#class {calisp} {close};
