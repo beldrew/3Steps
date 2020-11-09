@@ -11,4 +11,4 @@
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
-#class {calisp} {close};
+#class {talir} {close};
