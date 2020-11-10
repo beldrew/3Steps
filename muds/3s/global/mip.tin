@@ -431,7 +431,7 @@
 	#NOP warders;
 	#REGEX {%0} {~Mellaous~salutes his fallen foe}{#var mipgag 1};
 	#REGEX {%0} {~Lyrelle~}{#var mipgag 1};
-	#REGEX {%0} {has slain a Darkfriend}{#var mipgag 1};
+	#REGEX {%0} {~Ellid~}{#var mipgag 1};
 
 	#NOP bards;
 	#REGEX {%0} {smiles happily}{#var mipgag 1};
