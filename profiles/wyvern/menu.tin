@@ -82,6 +82,13 @@
 
 #echo {};
 
+#echo {15) Bysis(necromancer)(pure)};
+#var {my[alts][15][name]}{bysis3s};
+#var {my[alts][15][guild]}{necromancer};
+#var {my[alts][15][subguild]}{pure};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};

@@ -1,0 +1,15 @@
+#class {bysis} {kill};
+#class {bysis} {open};
+
+#var guild warder
+
+#ticker {gxp}{#send {}}{240};
+
+#read /Users/talir/Dropbox/3k/necromancer3s.txt;
+#read /home/beldrew/Dropbox/3k/necromancer3s.txt;
+
+#read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
+#read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
+
+
+#class {bysis} {close};
