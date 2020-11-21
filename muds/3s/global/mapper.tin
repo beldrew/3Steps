@@ -95,7 +95,7 @@
 			{
 				#map set roomnote seaout;#map set roomsymbol o;#map set roomcolor <148>;
 			};
-			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
+			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers") || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u") || "$eachexit" == "enter" || "$eachexit" == "sinkhole"}{
 				#echo {Excluding a: $eachexit};
 				#continue;
 			}{
@@ -104,7 +104,7 @@
 		};
 		#map get {roomexit} {rexit};
 		#foreach {$rexit} {eachexit} {
-			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")  || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u")}{
+			#if {("%2" == "Sewer Portal" && "$area" == "Chaotic Sewers")  || ("$area" == "The Sea of Chaos" && "$eachexit" == "out") || ("$area" == "The Sea of Chaos" && "$eachexit" == "u") || "$eachexit" == "enter" || "$eachexit" == "sinkhole"}{
 				#echo {Excluding b: $eachexit};
 				#continue;
 			}{
