@@ -1,7 +1,7 @@
 #class {bysis} {kill};
 #class {bysis} {open};
 
-#var guild warder
+#var guild necromancer
 
 #ticker {gxp}{#send {}}{240};
 
@@ -12,5 +12,7 @@
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
 bl bok;
+
+#alias oextra ch;
 
 #class {bysis} {close};
