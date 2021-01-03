@@ -27,27 +27,6 @@
 	!forcehp;
 };
 
-
-#act {The coffin is full!}{cco};
-#act {The coffin is now full!}{cco};
-
-#nop {Bshroud};
-#act {Imogen says: Other than me, who were the people in the Silicon Wraiths}{
-	say midnite, talon, stella, kerrie, azrael, enigma;
-}
-
-#act {Imogen says: Where does Azrael spend most of his time?}{
-	say basement;
-}
-
-#act {Imogen says: Finally, what are the names of the corporations}{
-	say megatech, sonybishi;
-}
-
-#act {Imogen whispers: %1, your code is %2.}{
-        #var {pincode}{%2};
-}
-
 #act {^To do so, type: tskill %1}{
 	#send {tskill %1};
 }; 

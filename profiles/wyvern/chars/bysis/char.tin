@@ -13,6 +13,6 @@
 
 bl bok;
 
-#alias oextra ch;
+#alias oextra {ch;pis};
 
 #class {bysis} {close};
