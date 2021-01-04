@@ -434,7 +434,7 @@
 
 	#NOP NECROS;
 	#REGEX {%0} {~Bray~}{#var mipgag 1};
-	#REGEX {%0} { shivers from the cold } {#var mipgag 1};
+	#REGEX {%0} { shivers from the cold} {#var mipgag 1};
 	#REGEX {%0} {~Death~}{#var mipgag 1};
 	#REGEX {%0} {~Bok~}{#var mipgag 1};
 
