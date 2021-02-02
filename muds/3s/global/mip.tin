@@ -70,6 +70,8 @@
 	update_caption;
 } {1}
 
+#alias {killdeadman}{#TICKER {idle} {#math {idle} {$idle + 1};#if {$idle > 3000} {#draw tile 21 1 -8 1 {<BF00>}}; #elseif {$idle > 2400} {#draw tile 21 1 -8 1 {<BFF0>}}; #elseif {$idle > 1800} {#draw tile 21 1 -8 1 {<B0F0>}}; #elseif {$idle < 600} {#screen clear square 21 1 -8 1};update_caption;} {1}};
+
 #EVENT {RECEIVED INPUT} {
 	#var idle 0;
 }

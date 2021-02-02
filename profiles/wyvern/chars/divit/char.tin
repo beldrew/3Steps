@@ -14,6 +14,13 @@
 #NOP 	update_status;
 #NOP };
 
+#alias gentrash {w;gax;get all;e;guild;e;u;w;n;trash all;s;e;d;w;home};
+
+#action {Its melee attacks do slashing damage}{switchshield bladed};
+#action {Its melee attacks do crushing damage}{switchshield disruptive};
+
+#action {{You attack|attacking you}}{exa mutant};
+
 #alias oextra {ta;};
 #var gentech[corpse] reclaim;
 

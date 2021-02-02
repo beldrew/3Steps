@@ -17,9 +17,5 @@
 
 #var jedi[diceSides] 1;
 #NOP no need to htrance because sith;
-#alias {guild_kill_action}
-{
-	#showme {There is no reason to 'inch' here.};
-};
 
 #class {sithit} {close};
