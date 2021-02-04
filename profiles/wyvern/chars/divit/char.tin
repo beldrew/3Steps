@@ -1,47 +1,14 @@
 #class {divit} {kill};
 #class {divit} {open};
 
+#var guild gentech;
+
+#read /Users/talir/Dropbox/3k/gentech3s.txt;
+#read /home/beldrew/Dropbox/3k/gentech3s.txt;
+
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
-#read /Users/talir/Dropbox/3k/hooligan.txt;
-#read /home/beldrew/Dropbox/3k/hooligan.txt;
-
-#var guild gentech;
-
-#NOP #action {HP:%d/%d %*}
-#NOP {
-#NOP 	update_status;
-#NOP };
-
-#alias gentrash {w;gax;get all;e;guild;e;u;w;n;trash all;s;e;d;w;home};
-
-#action {Its melee attacks do slashing damage}{switchshield bladed};
-#action {Its melee attacks do crushing damage}{switchshield disruptive};
-
-#action {{You attack|attacking you}}{exa mutant};
-
-#alias oextra {ta;};
-#var gentech[corpse] reclaim;
-
-#action {%* dealt the killing blow to}{
-	#send {!get coins from corpse};
-	$gentech[corpse];
-	#send {!get coins};
-	oextra;
-	#showme {There is no reason to 'inch' here.};
-};
-
-#alias {next %*} {
-	#action {There is no reason to 'inch' here.$}
-	{
-		#math gentech[nextDelay] {1 d 6};
-		#echo {Next delay: [$gentech[nextDelay]] Action [%1]};
-		#delay {$gentech[nextDelay]}{
-			%1;
-		};
-	};
-};
-next #bell;
+#alias oextra {get all};
 
 #class {divit} {close};

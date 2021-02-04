@@ -3,8 +3,6 @@
 
 #var guild necromancer
 
-#ticker {gxp}{#send {}}{240};
-
 #read /Users/talir/Dropbox/3k/necromancer3s.txt;
 #read /home/beldrew/Dropbox/3k/necromancer3s.txt;
 
