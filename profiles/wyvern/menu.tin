@@ -89,10 +89,10 @@
 
 #echo {};
 
-#echo {15) Thrice(juggernaut)(elemental)};
-#var {my[alts][15][name]}{thrice3s};
-#var {my[alts][15][guild]}{juggernaut};
-#var {my[alts][15][subguild]}{elemental};
+#echo {16) Thrice(juggernaut)(elemental)};
+#var {my[alts][16][name]}{thrice3s};
+#var {my[alts][16][guild]}{juggernaut};
+#var {my[alts][16][subguild]}{elemental};
 
 #echo {};
 
