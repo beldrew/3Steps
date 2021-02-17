@@ -89,6 +89,13 @@
 
 #echo {};
 
+#echo {15) Thrice(juggernaut)(elemental)};
+#var {my[alts][15][name]}{thrice3s};
+#var {my[alts][15][guild]}{juggernaut};
+#var {my[alts][15][subguild]}{elemental};
+
+#echo {};
+
 #echo {con <number>:};
 
 #line oneshot #alias {^%d$}{con %1};
