@@ -41,6 +41,8 @@ autok;
 party;
 
 #action {The Daemon Blade screams at you, 'I need SOULS!!'}{steal};
+#action {The Daemon Blade drags your swing down and you miss}{steal};
+#action {You miss as the Daemon Blade twists at the last second}{steal};
 #gag {%*You feel the Daemon Blade come alive as you cut deep into };
 #gag {%*The Daemon Blade is licked with black flame as you strike!};
 #gag {%*The Daemon Blade gouges deeply into };

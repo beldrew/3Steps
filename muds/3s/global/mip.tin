@@ -633,6 +633,7 @@
 			#case {"Whine"}			{#var {commcol} {<118>}};
 			#case {"Wolf"}			{#var {commcol} {<228>}};
 			#case {"Zilch_shout"}		{#var {commcol} {<168>}};
+			#case {"CorpSpontanius"} {#var {commcol} {<168>}};
 			#default			{#var {commcol} {<178>}}
 		};
 		
