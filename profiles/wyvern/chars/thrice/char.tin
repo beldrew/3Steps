@@ -11,5 +11,7 @@
 
 bl truck;
 bl jeep;
+bl rover;
+bl tank;
 
 #class {thrice} {close};
