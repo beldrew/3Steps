@@ -518,7 +518,19 @@
 		#var mip[tellBeep] 1;
 		#echo {TellBeep on};
 	}
-}
+};
+
+#var mip[corpBeep] 0;
+#alias {^cb$}{
+	#IF {$mip[corpBeep] == 1}
+	{
+		#var mip[corpBeep] 0;
+		#echo {XorpBeep off};
+	}{
+		#var mip[corpBeep] 1;
+		#echo {CorpBeep on};
+	}
+};
 
 #ALIAS {.mipProcessBAB} {
 	#IF {$mip[debug] == 1}
@@ -635,7 +647,13 @@
 			#case {"Whine"}			{#var {commcol} {<118>}};
 			#case {"Wolf"}			{#var {commcol} {<228>}};
 			#case {"Zilch_shout"}		{#var {commcol} {<168>}};
-			#case {"CorpSpontanius"} {#var {commcol} {<168>}};
+			#case {"CorpSpontanius"} {
+				#var {commcol} {<168>};
+				#IF {$mip[corpBeep] == 1}
+				{
+					#bell;
+				};
+			};
 			#default			{#var {commcol} {<178>}}
 		};
 		
