@@ -13,5 +13,6 @@ bl truck;
 bl jeep;
 bl rover;
 bl tank;
+bl elemental;
 
 #class {thrice} {close};
