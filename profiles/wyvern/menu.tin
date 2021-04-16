@@ -23,10 +23,9 @@
 
 #echo {};
 
-#echo {4) Ralit(jedi)(baadu)};
+#echo {4) Ralit(monk)};
 #var {my[alts][4][name]}{ralit3s};
-#var {my[alts][4][guild]}{jedi};
-#var {my[alts][4][subguild]}{baadu};
+#var {my[alts][4][guild]}{monk};
 
 #echo {};
 

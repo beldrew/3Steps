@@ -1,6 +1,11 @@
 #class {ralit} {kill};
 #class {ralit} {open};
 
+
+#read /Users/talir/Dropbox/3k/monk3s.txt;
+#read /home/beldrew/Dropbox/3k/monk3s.txt;
+
+/*
 #var guild jedi
 #var jedi[name] Ralit;
 
@@ -17,12 +22,14 @@
 
 #alias rls {repair amethyst\;lightsaber};
 
+#alias oextra {ta};
+*/
+
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
 #read /Users/talir/Dropbox/3k/reforger.txt;
 #read /home/beldrew/Dropbox/3k/reforger.txt;
 
-#alias oextra {ta};
 
 #class {ralit} {close};

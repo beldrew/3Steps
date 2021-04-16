@@ -66,7 +66,7 @@ party;
 	challenge ghoti;
 };
 
-#var partybeep 0;
+#var partybeep 1;
 #alias pb {#IF {$partybeep == 0}{#echo {PartyBeep on};#var partybeep 1;}{#echo {PartyBeep off};#var partybeep 0;}}
 
 #action {^[{PARTY|PLINK}] %*:%*}
