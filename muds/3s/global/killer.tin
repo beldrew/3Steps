@@ -531,18 +531,12 @@ make_global_blacklist
 	make_killpath ${unexplored[${closest_unexplored}]};
 };
 
-#alias kio {
-	#var domove2 0;
-	#var player_room 0;
-	#var critter_room 0;
-};
-
 #alias ki {
-	#NOP #if {$domove2 == 1}{
-	#NOP 	#var domove2 0;
-	#NOP 	#var player_room 0;
-	#NOP 	#var critter_room 0
-	#NOP }{
+	#if {$domove2 == 1}{
+		#var domove2 0;
+		#var player_room 0;
+		#var critter_room 0
+	}{
 		#var critter_room 0;
 		#var player_room 0;
 		#var domove2 1;
@@ -573,7 +567,7 @@ make_global_blacklist
 			!cease;
 		};
 		glance;
-	#NOP };
+	};
 }
 
 #alias {gather_items}{
