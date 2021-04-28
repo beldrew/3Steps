@@ -101,16 +101,6 @@ party;
 #alias bfathom {sw;se;sw;sw;w;sw;e;se;se;e;e;e;e;portal;home};
 #alias gfathom {fantasy;pr;w;w;w;w;nw;nw;w;ne;e;ne;ne;nw;ne};
 
-#alias ss {#30 #send {!south}};
-#alias nn {#30 #send {!north}};
-#alias ee {#30 #send {!east}};
-#alias ww {#30 #send {!west}};
-
-#alias see {#30 #send {!southeast}};
-#alias nee {#30 #send {!northeast}};
-#alias sww {#30 #send {!southwest}};
-#alias nww {#30 #send {!northwest}};
-
 #sub {=X=%*=X=}{<139>%1<099>};
 #sub {=M= %*}{<059>%1<099>};
 #sub {=W= %*}{<019>%1<099>};

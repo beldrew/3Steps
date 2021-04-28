@@ -531,6 +531,8 @@ make_global_blacklist
 	make_killpath ${unexplored[${closest_unexplored}]};
 };
 
+#alias kii {#var domove2 0;ki};
+
 #alias ki {
 	#if {$domove2 == 1}{
 		#var domove2 0;
