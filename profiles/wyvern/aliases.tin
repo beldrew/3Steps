@@ -71,7 +71,7 @@ party;
 
 #action {^[{PARTY|PLINK}] %*:%*}
 {
-    #if {"%1" == "Ralit" || "%1" == "Wyvern" || "%1" == "Calisp" || "%1" == "Bysis" || "%1" == "Talir" || "%1" == "Dathit" || "%1" == "Goo"}
+    #if {"%1" == "Ralit" || "%1" == "Wyvern" || "%1" == "Calisp" || "%1" == "Bysis" || "%1" == "Talir" || "%1" == "Dathit" || "%1" == "Goo" || "%1" == "Thrice"}
     {
         #return;
     };

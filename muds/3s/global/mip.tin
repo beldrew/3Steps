@@ -527,7 +527,7 @@
 	#IF {$mip[corpBeep] == 1}
 	{
 		#var mip[corpBeep] 0;
-		#echo {XorpBeep off};
+		#echo {CorpBeep off};
 	}{
 		#var mip[corpBeep] 1;
 		#echo {CorpBeep on};

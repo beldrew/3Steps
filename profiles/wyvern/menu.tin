@@ -88,10 +88,17 @@
 
 #echo {};
 
-#echo {16) Thrice(juggernaut)(elemental)};
+#echo {16) Thrice(juggernaut)(salamander)};
 #var {my[alts][16][name]}{thrice3s};
 #var {my[alts][16][guild]}{juggernaut};
-#var {my[alts][16][subguild]}{elemental};
+#var {my[alts][16][subguild]}{salamander};
+
+#echo {};
+
+#echo {17) Wyvern(jedi)(shimura)};
+#var {my[alts][17][name]}{wyvern3s};
+#var {my[alts][17][guild]}{jedi};
+#var {my[alts][17][subguild]}{shimura};
 
 #echo {};
 
