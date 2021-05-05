@@ -109,15 +109,15 @@ party;
 #sub {=P= %*}{<169>%1<099>};
 
 
-#ALIAS {pw}{portal;#12 n;leave;#12 n;s;#10 w};
+#NOP #ALIAS {pw}{portal;#12 n;leave;#12 n;s;#10 w};
 
-#alias {pr} {portal;#12 n;leave;#8 n;#4 e;#6 n;#9 w};
+#NOP #alias {pr} {portal;#12 n;leave;#8 n;#4 e;#6 n;#9 w};
 
-#alias {pi}{pr;#8 e;#10 n};
+#NOP #alias {pi}{pr;#8 e;#10 n};
 
-#alias {pe}{portal;#15 e;leave;#4 e;ne;ne;n;ne;ne;#3 e};
+#NOP #alias {pe}{portal;#15 e;leave;#4 e;ne;ne;n;ne;ne;#3 e};
 
-#alias {pd}{portal;#12 w;leave;#8 w;#3 s};
+#NOP #alias {pd}{portal;#12 w;leave;#8 w;#3 s};
 
 #gag {^>$};
 
