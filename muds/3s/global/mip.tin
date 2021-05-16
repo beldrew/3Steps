@@ -445,6 +445,8 @@
 	#REGEX {%0} {smiles happily}{#var mipgag 1};
 	#REGEX {%0} {You notice that people can now see you}{#var mipgag 1};
 	#REGEX {%0} {~Great~cheer fills you, it's almost overwhelming}{#var mipgag 1};
+	#REGEX {%0} {ceases {his|her|its} performance}{#var mipgag 1};
+	#REGEX {%0} {takes a deep breath and prepares to perform a song for}{#var mipgag 1};
 
 	#REGEX {%0} {~Korenth~} {#bell};
 	#REGEX {%0} {~Zanadu~} {#bell};
