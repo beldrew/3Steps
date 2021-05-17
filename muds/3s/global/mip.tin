@@ -448,6 +448,7 @@
 	#REGEX {%0} {ceases {his|her|its} performance}{#var mipgag 1};
 	#REGEX {%0} {takes a deep breath and prepares to perform a song for}{#var mipgag 1};
 	#REGEX {%0} {finishes {his|her|its} performance with a bow}{#var mipgag 1};
+	#REGEX {%0} {takes a deep breath.}{#var mipgag 1};
 
 	#REGEX {%0} {~Korenth~} {#bell};
 	#REGEX {%0} {~Zanadu~} {#bell};
