@@ -1,11 +1,10 @@
 #class {krathit} {kill};
 #class {krathit} {open};
 
-#var guild jedi
-#var jedi[name] Krathit;
+#var guild angel;
 
-#read /Users/talir/Dropbox/3k/jedi3s.txt;
-#read /home/beldrew/Dropbox/3k/jedi3s.txt;
+#read /Users/talir/Dropbox/3k/angel3s.txt;
+#read /home/beldrew/Dropbox/3k/angel3s.txt;
 
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
@@ -13,6 +12,6 @@
 #read /Users/talir/Dropbox/3k/hooligan.txt;
 #read /home/beldrew/Dropbox/3k/hooligan.txt;
 
-#alias oextra {ta};
+#alias oextra {get all};
 
 #class {krathit} {close};

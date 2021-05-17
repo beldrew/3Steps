@@ -35,10 +35,10 @@
 
 #echo {};
 
-#echo {6) Krathit(jedi)(krath)};
+#echo {6) Krathit(angel)(divine)};
 #var {my[alts][6][name]}{krathit3s};
-#var {my[alts][6][guild]}{jedi};
-#var {my[alts][6][subguild]}{krath};
+#var {my[alts][6][guild]}{angel};
+#var {my[alts][6][subguild]}{divine};
 
 #echo {};
 
