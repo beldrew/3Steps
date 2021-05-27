@@ -260,6 +260,7 @@ make_global_blacklist
 			#echo {Using Manual Stepper};
 			#var {manual_stepper}{1};
 			#var {stepignore}{1};
+			#send {brief on yes};
 		};
 		#case {1}{
 			#echo {Using Magic Wanderer};
