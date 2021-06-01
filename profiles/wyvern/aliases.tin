@@ -75,6 +75,9 @@ party;
     {
         #return;
     };
+	
+	#REGEX {SPAWNED CUBELET}{#RETURN};
+
     #if {$partybeep == 1}
     {
         #bell;
