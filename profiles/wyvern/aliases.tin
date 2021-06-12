@@ -69,20 +69,7 @@ party;
 #var partybeep 1;
 #alias pb {#IF {$partybeep == 0}{#echo {PartyBeep on};#var partybeep 1;}{#echo {PartyBeep off};#var partybeep 0;}}
 
-#action {^[{PARTY|PLINK}] %*:%*}
-{
-    #if {"%1" == "Ralit" || "%1" == "Wyvern" || "%1" == "Calisp" || "%1" == "Bysis" || "%1" == "Talir" || "%1" == "Dathit" || "%1" == "Goo" || "%1" == "Thrice"}
-    {
-        #return;
-    };
-	
-	#REGEX {SPAWNED CUBELET}{#RETURN};
-
-    #if {$partybeep == 1}
-    {
-        #bell;
-    };
-}
+#action {^[{PARTY|PLINK}] %*:%*}{#echo {1 = %2};#if {"%2" == "Ralit" || "%2" == "Wyvern" || "%2" == "Calisp" || "%2" == "Bysis" || "%2" == "Talir" || "%2" == "Dathit" || "%2" == "Goo" || "%2" == "Thrice" || "%2" == "Beldrew" || "%2" == "Fremit" || "%2" == "Krathit" || "%2" == "Sithit"}{#return;};#REGEX {SPAWNED CUBELET}{#RETURN};#if {$partybeep == 1}{#bell;};}
 
 #alias {^who$}{#send {!who -l}};
 
