@@ -3,10 +3,10 @@
 #echo {Alts:};
 #echo {};
 
-#echo {1) Talir(angel)(fallen)};
+#echo {1) Talir(angel)(divine)};
 #var {my[alts][1][name]}{talir3s};
 #var {my[alts][1][guild]}{angel};
-#var {my[alts][1][subguild]}{fallen};
+#var {my[alts][1][subguild]}{divine};
 
 #echo {};
 
@@ -35,10 +35,9 @@
 
 #echo {};
 
-#echo {6) Krathit(angel)(divine)};
+#echo {6) Krathit(adventurer)};
 #var {my[alts][6][name]}{krathit3s};
-#var {my[alts][6][guild]}{angel};
-#var {my[alts][6][subguild]}{divine};
+#var {my[alts][6][guild]}{adventurer};
 
 #echo {};
 
