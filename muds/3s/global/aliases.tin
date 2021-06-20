@@ -86,10 +86,6 @@
         keep key
 }
 
-#alias {i1} {insert hand into left hole}
-#alias {i2} {insert hand into centre hole}
-#alias {i3} {insert hand into right hole}
-
 #alias {getcloud} {
         go cloud;
         gaze into mirror;
