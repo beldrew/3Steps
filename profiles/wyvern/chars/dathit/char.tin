@@ -1,18 +1,18 @@
 #class {dathit} {kill};
 #class {dathit} {open};
 
-#var guild jedi
-#var jedi[name] Dathit;
+#var guild witch
+#var witch[name] Dathit;
 
 #read /Users/talir/Dropbox/3k/reforger.txt;
 #read /home/beldrew/Dropbox/3k/reforger.txt;
 
-#read /Users/talir/Dropbox/3k/jedi3s.txt;
-#read /home/beldrew/Dropbox/3k/jedi3s.txt;
+#read /Users/talir/Dropbox/3k/witch3s.txt;
+#read /home/beldrew/Dropbox/3k/witch3s.txt;
 
 #read /Users/talir/source/tintin/muds/3s/global/miphp.tin;
 #read /home/beldrew/source/3Steps/muds/3s/global/miphp.tin;
 
-#alias oextra {ta};
+#alias oextra {#nop {};};
 
 #class {dathit} {close};

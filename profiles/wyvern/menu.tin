@@ -10,10 +10,9 @@
 
 #echo {};
 
-#echo {2) Dathit(jedi)(dathomir witch)};
+#echo {2) Dathit(witch)};
 #var {my[alts][2][name]}{dathit3s};
-#var {my[alts][2][guild]}{jedi};
-#var {my[alts][2][subguild]}{dathomir witch};
+#var {my[alts][2][guild]}{witch};
 
 #echo {};
 
@@ -80,10 +79,10 @@
 
 #echo {};
 
-#echo {15) Bysis(necromancer)(pure)};
+#echo {15) Bysis(necromancer)(reaper)};
 #var {my[alts][15][name]}{bysis3s};
 #var {my[alts][15][guild]}{necromancer};
-#var {my[alts][15][subguild]}{pure};
+#var {my[alts][15][subguild]}{reaper};
 
 #echo {};
 
