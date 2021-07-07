@@ -74,7 +74,7 @@
 			#format {ses_len} {%L} {%0};
 			#math {ses_len} {$ses_len-2};
 			#format {ses_name} {%.${ses_len}s} {%0};
-		}
+		};
 		#case {"ZM"}{
 			#var {mud} {ZM};
 			#ses {%0} {zombiemud.org} {23};
