@@ -465,7 +465,9 @@
 	#REGEX {%0} {~Wildduces~} {#var mipgag 1};
 	#REGEX {%0} {~Theon~} {#var mipgag 1};
 	#REGEX {%0} {~Ayumi~} {#var mipgag 1};
+	#REGEX {%0} {~Pumuckl~} {#var mipgag 1};
 	#REGEX {%0} {wraps his arms around} {#var mipgag 1};
+	
 	#IF {$mipgag == 0} {.mipProcessBAB %0}
 }
 
