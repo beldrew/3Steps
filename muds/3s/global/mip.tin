@@ -439,6 +439,7 @@
 	#REGEX {%0} {~Lyrelle~}{#var mipgag 1};
 	#REGEX {%0} {~Ellid~}{#var mipgag 1};
 	#REGEX {%0} {~Myrelle~}{#var mipgag 1};
+	#REGEX {%0} {~Elayne~}{#var mipgag 1};
 
 	#NOP NECROS;
 	#REGEX {%0} {~Bray~}{#var mipgag 1};
