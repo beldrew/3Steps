@@ -434,12 +434,16 @@
 	#NOP warders;
 	#REGEX {%0} {~Mellaous~salutes his fallen foe}{#var mipgag 1};
 	#REGEX {%0} {~Modrack~salutes his fallen foe}{#var mipgag 1};
+	#REGEX {%0} {~Lust~salutes his fallen foe}{#var mipgag 1};
 	#REGEX {%0} {~Modrack~smoothly removes his blade from his enemy and moves on to the next}{#var mipgag 1};
 	#REGEX {%0} {~The~Wheel turns, and the corpse blows away, dust on the wind of time}{#var mipgag 1};
 	#REGEX {%0} {~Lyrelle~}{#var mipgag 1};
 	#REGEX {%0} {~Ellid~}{#var mipgag 1};
+	#REGEX {%0} {~Ellid's~}{#var mipgag 1};
 	#REGEX {%0} {~Myrelle~}{#var mipgag 1};
 	#REGEX {%0} {~Elayne~}{#var mipgag 1};
+	#REGEX {%0} {~Graendal~}{#var mipgag 1};
+	#REGEX {%0} {~Serafelle~}{#var mipgag 1};
 
 	#NOP NECROS;
 	#REGEX {%0} {~Bray~}{#var mipgag 1};
